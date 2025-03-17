@@ -6,30 +6,45 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CE080CF22D8894A100429809 /* VectorEntity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE080CE62D8894A100429809 /* VectorEntity.xcdatamodeld */; };
+		CE080CF32D8894A100429809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080CE72D8894A100429809 /* AppDelegate.swift */; };
+		CE080CF42D8894A100429809 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080CEE2D8894A100429809 /* SceneDelegate.swift */; };
+		CE080CF52D8894A100429809 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080CEF2D8894A100429809 /* MainViewController.swift */; };
+		CE080CF62D8894A100429809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE080CE82D8894A100429809 /* Assets.xcassets */; };
+		CE080CF82D8894A100429809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE080CEB2D8894A100429809 /* LaunchScreen.storyboard */; };
+		CE080D002D8896A500429809 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080CFF2D88969800429809 /* MainInteractor.swift */; };
+		CE080D022D8896B200429809 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D012D8896AC00429809 /* MainPresenter.swift */; };
+		CE080D042D8896BA00429809 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D032D8896B500429809 /* MainRouter.swift */; };
+		CE080D062D8896C700429809 /* MainConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D052D8896C300429809 /* MainConfigurator.swift */; };
+		CE080D092D88975F00429809 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D082D88975A00429809 /* StorageManager.swift */; };
+		CE080D0B2D889F1200429809 /* MainWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D0A2D889F0E00429809 /* MainWorker.swift */; };
+		CE080D0D2D889F3200429809 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D0C2D889F2F00429809 /* MainModel.swift */; };
+		CE080D0F2D88A2FC00429809 /* VectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D0E2D88A2F400429809 /* VectorModel.swift */; };
+		CE080D122D88A6E200429809 /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D112D88A6D800429809 /* Extension + UIColor.swift */; };
+		CE080D152D88C60C00429809 /* CanvasScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D142D88C60700429809 /* CanvasScene.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CE080CCB2D88949700429809 /* Align2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Align2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE080CE72D8894A100429809 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE080CE82D8894A100429809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE080CE92D8894A100429809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE080CEA2D8894A100429809 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE080CEE2D8894A100429809 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CE080CEF2D8894A100429809 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CE080CF12D8894A100429809 /* VectorEntity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VectorEntity.xcdatamodel; sourceTree = "<group>"; };
+		CE080CFF2D88969800429809 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		CE080D012D8896AC00429809 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		CE080D032D8896B500429809 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		CE080D052D8896C300429809 /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
+		CE080D082D88975A00429809 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		CE080D0A2D889F0E00429809 /* MainWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWorker.swift; sourceTree = "<group>"; };
+		CE080D0C2D889F2F00429809 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		CE080D0E2D88A2F400429809 /* VectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorModel.swift; sourceTree = "<group>"; };
+		CE080D112D88A6D800429809 /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
+		CE080D142D88C60700429809 /* CanvasScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CE080CE02D88949A00429809 /* Exceptions for "Align2D" folder in "Align2D" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = CE080CCA2D88949700429809 /* Align2D */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		CE080CCD2D88949700429809 /* Align2D */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				CE080CE02D88949A00429809 /* Exceptions for "Align2D" folder in "Align2D" target */,
-			);
-			path = Align2D;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CE080CC82D88949700429809 /* Frameworks */ = {
@@ -45,7 +60,7 @@
 		CE080CC22D88949700429809 = {
 			isa = PBXGroup;
 			children = (
-				CE080CCD2D88949700429809 /* Align2D */,
+				CE080CF02D8894A100429809 /* Align2D */,
 				CE080CCC2D88949700429809 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +71,94 @@
 				CE080CCB2D88949700429809 /* Align2D.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CE080CF02D8894A100429809 /* Align2D */ = {
+			isa = PBXGroup;
+			children = (
+				CE080D102D88A6D100429809 /* Extensions */,
+				CE080CFA2D8894E800429809 /* Apps */,
+				CE080CFD2D88957A00429809 /* Main */,
+				CE080CFC2D88951500429809 /* Models */,
+				CE080CFE2D88968D00429809 /* Services */,
+				CE080D072D8896D500429809 /* LaunchScreen */,
+				CE080CFB2D88950900429809 /* Resources */,
+			);
+			path = Align2D;
+			sourceTree = "<group>";
+		};
+		CE080CFA2D8894E800429809 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				CE080CE72D8894A100429809 /* AppDelegate.swift */,
+				CE080CEE2D8894A100429809 /* SceneDelegate.swift */,
+				CE080CE92D8894A100429809 /* Info.plist */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		CE080CFB2D88950900429809 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE080CE82D8894A100429809 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE080CFC2D88951500429809 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE080D0E2D88A2F400429809 /* VectorModel.swift */,
+				CE080CE62D8894A100429809 /* VectorEntity.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE080CFD2D88957A00429809 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CE080D132D88C5FF00429809 /* Canvas */,
+				CE080CEF2D8894A100429809 /* MainViewController.swift */,
+				CE080CFF2D88969800429809 /* MainInteractor.swift */,
+				CE080D012D8896AC00429809 /* MainPresenter.swift */,
+				CE080D032D8896B500429809 /* MainRouter.swift */,
+				CE080D0A2D889F0E00429809 /* MainWorker.swift */,
+				CE080D0C2D889F2F00429809 /* MainModel.swift */,
+				CE080D052D8896C300429809 /* MainConfigurator.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CE080CFE2D88968D00429809 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE080D082D88975A00429809 /* StorageManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE080D072D8896D500429809 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CE080CEB2D8894A100429809 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		CE080D102D88A6D100429809 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE080D112D88A6D800429809 /* Extension + UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CE080D132D88C5FF00429809 /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				CE080D142D88C60700429809 /* CanvasScene.swift */,
+			);
+			path = Canvas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,9 +175,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				CE080CCD2D88949700429809 /* Align2D */,
 			);
 			name = Align2D;
 			packageProductDependencies = (
@@ -122,6 +222,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE080CF62D8894A100429809 /* Assets.xcassets in Resources */,
+				CE080CF82D8894A100429809 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +234,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE080CF22D8894A100429809 /* VectorEntity.xcdatamodeld in Sources */,
+				CE080D062D8896C700429809 /* MainConfigurator.swift in Sources */,
+				CE080D042D8896BA00429809 /* MainRouter.swift in Sources */,
+				CE080D022D8896B200429809 /* MainPresenter.swift in Sources */,
+				CE080CF32D8894A100429809 /* AppDelegate.swift in Sources */,
+				CE080CF42D8894A100429809 /* SceneDelegate.swift in Sources */,
+				CE080D0D2D889F3200429809 /* MainModel.swift in Sources */,
+				CE080D002D8896A500429809 /* MainInteractor.swift in Sources */,
+				CE080D122D88A6E200429809 /* Extension + UIColor.swift in Sources */,
+				CE080D0F2D88A2FC00429809 /* VectorModel.swift in Sources */,
+				CE080D152D88C60C00429809 /* CanvasScene.swift in Sources */,
+				CE080D092D88975F00429809 /* StorageManager.swift in Sources */,
+				CE080D0B2D889F1200429809 /* MainWorker.swift in Sources */,
+				CE080CF52D8894A100429809 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CE080CEB2D8894A100429809 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE080CEA2D8894A100429809 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CE080CE22D88949A00429809 /* Debug */ = {
@@ -147,12 +274,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 24Q9WM75S6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Align2D/Info.plist;
+				INFOPLIST_FILE = Align2D/Apps/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -160,9 +287,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AlexHalushko.Align2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -175,12 +306,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 24Q9WM75S6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Align2D/Info.plist;
+				INFOPLIST_FILE = Align2D/Apps/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -188,9 +319,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AlexHalushko.Align2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -335,6 +470,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CE080CE62D8894A100429809 /* VectorEntity.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CE080CF12D8894A100429809 /* VectorEntity.xcdatamodel */,
+			);
+			currentVersion = CE080CF12D8894A100429809 /* VectorEntity.xcdatamodel */;
+			path = VectorEntity.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CE080CC32D88949700429809 /* Project object */;
 }
