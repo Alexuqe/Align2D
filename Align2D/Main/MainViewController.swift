@@ -10,13 +10,14 @@ import SpriteKit
 
 protocol MainDisplayLogic: AnyObject {
     func displayVectors(viewModel: MainModel.ShowVectors.ViewModel)
-    func displayError(message: String)
-    func updateCanvasOffset(offset: CGPoint)
 }
 
 final class MainViewController: UIViewController {
 
     var interactor: MainBusinessLogic?
+    var router: MainRoutingLogic?
+
+    private var canvasScene = CanvasScene()
     private var skView = SKView()
     private var toolbar = UIToolbar()
 
@@ -27,6 +28,7 @@ final class MainViewController: UIViewController {
 
     private func setupUI() {
         MainViewConfigurator.shared.configure(with: self)
+        interactor?.fetchVectors(request: MainModel.ShowVectors.Request())
         view.backgroundColor = .white
         setupNavigationController()
         setupSKView()
@@ -46,8 +48,8 @@ private extension MainViewController {
         skView.frame = view.bounds
         view.addSubview(skView)
 
-        let scene = CanvasScene(size: view.bounds.size)
-        skView.presentScene(scene)
+        canvasScene = CanvasScene(size: view.bounds.size)
+        skView.presentScene(canvasScene)
     }
 }
 
@@ -119,26 +121,6 @@ extension MainViewController: MainDisplayLogic {
     func displayVectors(viewModel: MainModel.ShowVectors.ViewModel) {
         guard let scene = skView.scene as? CanvasScene else { return }
         scene.clearCanvas()
-
-        for vector in viewModel.vectors {
-            scene.addVector(
-                id: vector.id,
-                start: vector.start,
-                end: vector.end,
-                color: vector.color)
-        }
-    }
-
-    func displayError(message: String) {
-        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .default)
-        alert.addAction(alertAction)
-        present(alert, animated: true)
-    }
-
-    func updateCanvasOffset(offset: CGPoint) {
-        guard let scene = skView.scene as? CanvasScene else { return }
-        scene.updateOffset(offset: offset)
     }
 }
 

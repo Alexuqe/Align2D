@@ -10,15 +10,15 @@ import UIKit
 final class MainWorker {
     private let storageManager = StorageManager.shared
 
-    func fetchVector(completion: @escaping (Result<[VectorDataModel], Error>) -> Void) {
-        storageManager.fetchVectors(completion: completion)
+    func fetchVector(completion: @escaping (Result<[VectorEntity], Error>) -> Void) {
+        storageManager.fetch(completion: completion)
     }
 
-    func saveVector(model: VectorDataModel, completion: @escaping (Result<Void, Error>) -> Void) {
-        storageManager.saveVector(model: model, completion: completion)
+    func saveVector(model: VectorModel, completion: @escaping (Result<Void, Error>) -> Void) {
+        storageManager.saveVector(vector: model, completion: completion)
     }
 
-    func deleteVector(by id: UUID, completion: @escaping (Result<Void, Error>) -> Void) {
-        storageManager.deleteVector(by: id, completion: completion)
+    func deleteVector(vector: VectorEntity, completion: @escaping (Result<Void, Error>) -> Void) {
+        storageManager.delete(vector: vector, completion: completion)
     }
 }

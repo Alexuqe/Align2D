@@ -32,47 +32,16 @@ final class StorageManager {
         backgroundViewContext.automaticallyMergesChangesFromParent = true
     }
 
-    func fetchVectors(completion: @escaping (Result<[VectorDataModel], Error>) -> Void)  {
+    //MARK: - Core Data Methods
+    func fetch(completion: @escaping (Result<[VectorEntity], Error>) -> Void) {
         let fetchRequest = VectorEntity.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
 
-        backgroundViewContext.perform {
-            do {
-                let vectorEntities = try self.backgroundViewContext.fetch(fetchRequest)
-                let vectors = vectorEntities.map { entity in
-                    VectorDataModel(
-                        id: entity.id ?? UUID(),
-                        startPoint: CGPoint(x: entity.startX, y: entity.startY),
-                        endPoint: CGPoint(x: entity.endX, y: entity.endY),
-                        color: UIColor(hexString: entity.color ?? "#FFFFFF"))
-                }
-                DispatchQueue.main.async {
-                    completion(.success(vectors))
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-            }
-        }
-    }
-
-    func saveVector(model: VectorDataModel, completion: @escaping (Result<Void,Error>) -> Void) {
-        backgroundViewContext.perform {
-            let vectorEntity = VectorEntity(context: self.backgroundViewContext)
-            vectorEntity.id = model.id
-            vectorEntity.startX = model.startPoint.x
-            vectorEntity.startY = model.startPoint.y
-            vectorEntity.endX = model.endPoint.x
-            vectorEntity.endY = model.endPoint.y
-            vectorEntity.color = model.color.hexString
-        }
-
         do {
-            try self .backgroundViewContext.save()
+            let vectors = try self.backgroundViewContext.fetch(fetchRequest)
             DispatchQueue.main.async {
-                completion(.success(()))
+                completion(.success(vectors))
             }
         } catch {
             DispatchQueue.main.async {
@@ -81,37 +50,47 @@ final class StorageManager {
         }
     }
 
-    func deleteVector(by id: UUID, completion: @escaping (Result<Void, Error>) -> Void) {
-        let fetchRequest = VectorEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-
+    func saveVector(vector: VectorModel, completion: @escaping (Result<Void, Error>) -> Void) {
         backgroundViewContext.perform {
-            do {
-                let results = try self.backgroundViewContext.fetch(fetchRequest)
-                for vector in results {
-                    self.backgroundViewContext.delete(vector)
-                }
+            let entity = VectorEntity(context: self.backgroundViewContext)
+            entity.id = vector.id
+            entity.startX = Double(vector.startX)
+            entity.startY = Double(vector.startY)
+            entity.endX = Double(vector.endX)
+            entity.endY = Double(vector.endY)
+            entity.color = vector.color.hexString
 
+            do {
+                try self.backgroundViewContext.save()
+                completion(.success(()))
+            } catch {
+                self.backgroundViewContext.rollback()
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func delete(vector: VectorEntity, completion: @escaping (Result<Void, Error>) -> Void) {
+        backgroundViewContext.perform {
+            self.backgroundViewContext.delete(vector)
+            do {
                 try self.backgroundViewContext.save()
                 DispatchQueue.main.async {
                     completion(.success(()))
                 }
             } catch {
+                self.backgroundViewContext.rollback()
                 DispatchQueue.main.async {
                     completion(.failure(error))
                 }
             }
         }
     }
-
-
-
-
 }
 
     // MARK: - Core Data Saving support
 extension StorageManager {
-
+    
     func saveContext () {
         if viewContext.hasChanges {
             do {

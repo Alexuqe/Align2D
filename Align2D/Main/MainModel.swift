@@ -9,46 +9,52 @@ import UIKit
 
 typealias MainViewModels = MainModel.ShowVectors.ViewModel.DisplayedVector
 
-protocol MainViewModelProtocol {
-    var id: UUID { get set }
-    var start: CGPoint { get set }
-    var end: CGPoint { get set }
-    var color: UIColor { get set }
-}
-
 enum MainModel {
     
     enum ShowVectors {
         struct Request {}
         struct Response {
-            let vectors: [VectorDataModel]
+            let vectors: [VectorEntity]
         }
-
+        
         struct ViewModel {
             struct DisplayedVector {
-                var id: UUID
-                var start: CGPoint
-                var end: CGPoint
-                var color: UIColor
+                let id: UUID
+                let startX: CGFloat
+                let startY: CGFloat
+                let endX: CGFloat
+                let endY: CGFloat
+                let color: UIColor
             }
             let vectors: [DisplayedVector]
         }
     }
-
+    
     enum addVector {
         struct Request {
-            let start: CGPoint
-            let end: CGPoint
+            let startX: CGFloat
+            let startY: CGFloat
+            let endX: CGFloat
+            let endY: CGFloat
             let color: UIColor
         }
-    }
-
-    enum deleteVector {
-        struct Request {
-            let vectorID: UUID
+        
+        struct Responce {
+            let succes: Bool
+        }
+        
+        struct ViewModel {
+            let successMessage: String?
+            let errorMessage: String?
         }
     }
-
+    
+    enum deleteVector {
+        struct Request {
+            let vector: VectorEntity
+        }
+    }
+    
     enum Gesture {
         struct Request {
             let translation: CGPoint

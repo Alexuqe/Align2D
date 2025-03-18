@@ -7,9 +7,11 @@
 
 import UIKit
 
-struct VectorDataModel {
+struct VectorModel {
     let id: UUID
-    let startPoint: CGPoint
-    let endPoint: CGPoint
+    let startX: CGFloat
+    let startY: CGFloat
+    let endX: CGFloat
+    let endY: CGFloat
     let color: UIColor
 }
