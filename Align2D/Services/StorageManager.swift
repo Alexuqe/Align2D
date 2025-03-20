@@ -33,22 +33,6 @@ final class StorageManager {
     }
 
         //MARK: - Core Data Methods
-        //    func fetch(completion: @escaping (Result<[VectorEntity], Error>) -> Void) {
-        //        let fetchRequest = VectorEntity.fetchRequest()
-        //        let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
-        //        fetchRequest.sortDescriptors = [sortDescriptor]
-        //
-        //        do {
-        //            let vectors = try self.backgroundViewContext.fetch(fetchRequest)
-        //            DispatchQueue.main.async {
-        //                completion(.success(vectors))
-        //            }
-        //        } catch {
-        //            DispatchQueue.main.async {
-        //                completion(.failure(error))
-        //            }
-        //        }
-        //    }
 
     func fetch(completion: @escaping (Result<[VectorEntity], Error>) -> Void) {
         backgroundViewContext.perform { [weak self] in
@@ -81,7 +65,7 @@ final class StorageManager {
             entity.startY = Double(vector.startY)
             entity.endX = Double(vector.endX)
             entity.endY = Double(vector.endY)
-            entity.color = vector.color.hexString
+            entity.color = vector.color
 
             do {
                 try self.backgroundViewContext.save()
@@ -115,7 +99,13 @@ final class StorageManager {
         }
     }
 
-    func updateVector(id: UUID, startX: Double, startY: Double, endX: Double, endY: Double, completion: @escaping (Result<Void, Error>) -> Void) {
+    func updateVector(
+        id: UUID,
+        startX: Double,
+        startY: Double,
+        endX: Double,
+        endY: Double,
+        completion: @escaping (Result<Void, Error>) -> Void) {
         backgroundViewContext.perform { [weak self] in
             guard let self = self else { return }
 
@@ -126,7 +116,6 @@ final class StorageManager {
                 let results = try self.backgroundViewContext.fetch(request)
 
                 if let vector = results.first {
-                        // Обновляем координаты
                     vector.startX = startX
                     vector.startY = startY
                     vector.endX = endX
@@ -138,7 +127,12 @@ final class StorageManager {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        completion(.failure(NSError(domain: "UpdateError", code: 404, userInfo: [NSLocalizedDescriptionKey: "Vector not found"])))
+                        completion(
+                            .failure(
+                                NSError(
+                                    domain: "UpdateError",
+                                    code: 404,
+                                    userInfo: [NSLocalizedDescriptionKey: "Vector not found"])))
                     }
                 }
             } catch {

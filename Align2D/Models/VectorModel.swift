@@ -13,5 +13,5 @@ struct VectorModel {
     let startY: CGFloat
     let endX: CGFloat
     let endY: CGFloat
-    let color: UIColor
+    let color: String
 }

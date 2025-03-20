@@ -15,7 +15,7 @@ enum AddVectorModel {
             let startY: Double
             let endX: Double
             let endY: Double
-            let color: UIColor
+            let color: String
         }
 
         struct Response {

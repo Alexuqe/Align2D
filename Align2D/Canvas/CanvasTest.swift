@@ -323,6 +323,7 @@ class CanvasScene: SKScene {
         // Добавляем контейнер для всего содержимого
         addChild(contentNode)
         contentNode.position = CGPoint.zero
+        contentNode.isUserInteractionEnabled = false
 
         // Рисуем сетку в контейнере
         drawGrid()
@@ -352,6 +353,7 @@ class CanvasScene: SKScene {
             line.strokeColor = .lightGray
             line.lineWidth = 0.5
             line.zPosition = -1  // Сетка рисуется позади
+            contentNode.isUserInteractionEnabled = false
             contentNode.addChild(line)
         }
 
@@ -365,6 +367,7 @@ class CanvasScene: SKScene {
             line.strokeColor = .lightGray
             line.lineWidth = 0.5
             line.zPosition = -1
+            contentNode.isUserInteractionEnabled = false
             contentNode.addChild(line)
         }
     }
@@ -382,7 +385,7 @@ class CanvasScene: SKScene {
         path.addLine(to: endPoint)
 
         line.path = path
-        line.strokeColor = vector.color
+        line.strokeColor = UIColor(hexString: vector.color)
         line.lineWidth = 2.0
         line.name = "\(vector.id)"  // Используется для идентификации вектора
         addChild(line)
@@ -413,6 +416,30 @@ class CanvasScene: SKScene {
     }
 
     /// Обработка долгого нажатия для редактирования векторов.
+//    @objc private func handleLongPressGesture(_ gesture: UILongPressGestureRecognizer) {
+//        guard let view = self.view else { return }
+//        let locationInView = gesture.location(in: view)
+//        let sceneLocation = convertPoint(fromView: locationInView)
+//
+//        switch gesture.state {
+//        case .began:
+//            if let vectorNode = nodes(at: sceneLocation).compactMap({ $0 as? SKShapeNode }).first {
+//                selectedVector = vectorNode
+//                movingPointType = detectMovingPoint(for: vectorNode, touchLocation: sceneLocation)
+//            }
+//        case .changed:
+//            guard let vectorNode = selectedVector, let pointType = movingPointType else { return }
+//            DispatchQueue.main.async {
+//                self.updateVector(vectorNode: vectorNode, pointType: pointType, newLocation: sceneLocation)
+//            }
+//        case .ended, .cancelled:
+//            selectedVector = nil
+//            movingPointType = nil
+//        default:
+//            break
+//        }
+//    }
+
     @objc private func handleLongPressGesture(_ gesture: UILongPressGestureRecognizer) {
         guard let view = self.view else { return }
         let locationInView = gesture.location(in: view)
@@ -420,12 +447,14 @@ class CanvasScene: SKScene {
 
         switch gesture.state {
         case .began:
+            // Находим существующий узел (вектор) под касанием
             if let vectorNode = nodes(at: sceneLocation).compactMap({ $0 as? SKShapeNode }).first {
                 selectedVector = vectorNode
                 movingPointType = detectMovingPoint(for: vectorNode, touchLocation: sceneLocation)
             }
         case .changed:
             guard let vectorNode = selectedVector, let pointType = movingPointType else { return }
+            // Обновляем путь узла, не создавая новый
             DispatchQueue.main.async {
                 self.updateVector(vectorNode: vectorNode, pointType: pointType, newLocation: sceneLocation)
             }
@@ -436,6 +465,7 @@ class CanvasScene: SKScene {
             break
         }
     }
+
 
     // MARK: - Vector Editing Logic
 
@@ -495,7 +525,7 @@ class CanvasScene: SKScene {
             ) { result in
                 switch result {
                 case .success:
-                    print("Изменения вектора (с угол-снаппингом) успешно сохранены")
+                    print("Изменения вектора успешно сохранены")
                 case .failure(let error):
                     print("Ошибка при сохранении изменений: \(error)")
                 }

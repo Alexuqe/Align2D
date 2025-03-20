@@ -24,7 +24,7 @@ enum MainModel {
                 let startY: CGFloat
                 let endX: CGFloat
                 let endY: CGFloat
-                let color: UIColor
+                let color: String
             }
             let vectors: [DisplayedVector]
         }
@@ -36,7 +36,7 @@ enum MainModel {
             let startY: CGFloat
             let endX: CGFloat
             let endY: CGFloat
-            let color: UIColor
+            let color: String
         }
         
         struct Response {

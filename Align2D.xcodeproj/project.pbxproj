@@ -22,7 +22,6 @@
 		CE080D0D2D889F3200429809 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D0C2D889F2F00429809 /* MainModel.swift */; };
 		CE080D0F2D88A2FC00429809 /* VectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D0E2D88A2F400429809 /* VectorModel.swift */; };
 		CE080D122D88A6E200429809 /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D112D88A6D800429809 /* Extension + UIColor.swift */; };
-		CE080D152D88C60C00429809 /* CanvasScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D142D88C60700429809 /* CanvasScene.swift */; };
 		CEC8A6832D8A081F009A48FC /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6822D8A0812009A48FC /* SideMenuViewController.swift */; };
 		CEC8A6862D8A0A89009A48FC /* AddVectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6852D8A0A89009A48FC /* AddVectorViewController.swift */; };
 		CEC8A6882D8A12C5009A48FC /* AddVectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6872D8A12BE009A48FC /* AddVectorModel.swift */; };
@@ -56,7 +55,6 @@
 		CE080D0C2D889F2F00429809 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		CE080D0E2D88A2F400429809 /* VectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorModel.swift; sourceTree = "<group>"; };
 		CE080D112D88A6D800429809 /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
-		CE080D142D88C60700429809 /* CanvasScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasScene.swift; sourceTree = "<group>"; };
 		CEC8A6822D8A0812009A48FC /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		CEC8A6852D8A0A89009A48FC /* AddVectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorViewController.swift; sourceTree = "<group>"; };
 		CEC8A6872D8A12BE009A48FC /* AddVectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorModel.swift; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 		CE080D132D88C5FF00429809 /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
-				CE080D142D88C60700429809 /* CanvasScene.swift */,
 				CECBD9372D8C7097002E596B /* CanvasTest.swift */,
 			);
 			path = Canvas;
@@ -316,7 +313,6 @@
 				CEC8A6882D8A12C5009A48FC /* AddVectorModel.swift in Sources */,
 				CE080D0F2D88A2FC00429809 /* VectorModel.swift in Sources */,
 				CECBD9382D8C709E002E596B /* CanvasTest.swift in Sources */,
-				CE080D152D88C60C00429809 /* CanvasScene.swift in Sources */,
 				CE080D092D88975F00429809 /* StorageManager.swift in Sources */,
 				CEC8A68E2D8A1456009A48FC /* AddVectorPresenter.swift in Sources */,
 				CE080D0B2D889F1200429809 /* MainWorker.swift in Sources */,

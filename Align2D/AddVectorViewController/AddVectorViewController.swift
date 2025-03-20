@@ -207,8 +207,10 @@ extension AddVectorViewController: AddVectorDisplayLogic {
             startY: startY,
             endX: endX,
             endY: endY,
-            color: randomColor
+            color: randomColor.hexString
         )
+
+        print(request)
         interactor?.addVector(request: request)
         router?.passVectorToMain(vector: request)
     }

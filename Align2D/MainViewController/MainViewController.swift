@@ -24,7 +24,6 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MainViewConfigurator.shared.configure(with: self)
-        interactor?.fetchVectors(request: MainModel.ShowVectors.Request())
         setupUI()
     }
 
