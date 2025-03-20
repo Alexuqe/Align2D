@@ -34,7 +34,7 @@
 		CEC8A6992D8B2A77009A48FC /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6982D8B2A71009A48FC /* Extension + UIView.swift */; };
 		CEC8A69B2D8B2BE8009A48FC /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A69A2D8B2BE8009A48FC /* Label.swift */; };
 		CEC8A69D2D8B3973009A48FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A69C2D8B3973009A48FC /* Button.swift */; };
-		CECBD9382D8C709E002E596B /* CanvasTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBD9372D8C7097002E596B /* CanvasTest.swift */; };
+		CECBD9382D8C709E002E596B /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBD9372D8C7097002E596B /* Canvas.swift */; };
 		CECBD93A2D8CA5F3002E596B /* Extension + Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBD9392D8CA5EA002E596B /* Extension + Collection.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,7 @@
 		CEC8A6982D8B2A71009A48FC /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
 		CEC8A69A2D8B2BE8009A48FC /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		CEC8A69C2D8B3973009A48FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		CECBD9372D8C7097002E596B /* CanvasTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasTest.swift; sourceTree = "<group>"; };
+		CECBD9372D8C7097002E596B /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		CECBD9392D8CA5EA002E596B /* Extension + Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Collection.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,7 +187,7 @@
 		CE080D132D88C5FF00429809 /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
-				CECBD9372D8C7097002E596B /* CanvasTest.swift */,
+				CECBD9372D8C7097002E596B /* Canvas.swift */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 				CE080D122D88A6E200429809 /* Extension + UIColor.swift in Sources */,
 				CEC8A6882D8A12C5009A48FC /* AddVectorModel.swift in Sources */,
 				CE080D0F2D88A2FC00429809 /* VectorModel.swift in Sources */,
-				CECBD9382D8C709E002E596B /* CanvasTest.swift in Sources */,
+				CECBD9382D8C709E002E596B /* Canvas.swift in Sources */,
 				CE080D092D88975F00429809 /* StorageManager.swift in Sources */,
 				CEC8A68E2D8A1456009A48FC /* AddVectorPresenter.swift in Sources */,
 				CE080D0B2D889F1200429809 /* MainWorker.swift in Sources */,
