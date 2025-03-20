@@ -39,7 +39,7 @@ enum MainModel {
             let color: UIColor
         }
         
-        struct Responce {
+        struct Response {
             let succes: Bool
         }
         
@@ -52,12 +52,6 @@ enum MainModel {
     enum deleteVector {
         struct Request {
             let vector: VectorEntity
-        }
-    }
-    
-    enum Gesture {
-        struct Request {
-            let translation: CGPoint
         }
     }
 }

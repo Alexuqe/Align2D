@@ -31,6 +31,11 @@
 		CEC8A68E2D8A1456009A48FC /* AddVectorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A68D2D8A1450009A48FC /* AddVectorPresenter.swift */; };
 		CEC8A6902D8A14AF009A48FC /* AddVectorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A68F2D8A14A9009A48FC /* AddVectorRouter.swift */; };
 		CEC8A6922D8A1913009A48FC /* AddVectorConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6912D8A190C009A48FC /* AddVectorConfigurator.swift */; };
+		CEC8A6972D8B2727009A48FC /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6962D8B2727009A48FC /* TextField.swift */; };
+		CEC8A6992D8B2A77009A48FC /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6982D8B2A71009A48FC /* Extension + UIView.swift */; };
+		CEC8A69B2D8B2BE8009A48FC /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A69A2D8B2BE8009A48FC /* Label.swift */; };
+		CEC8A69D2D8B3973009A48FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A69C2D8B3973009A48FC /* Button.swift */; };
+		CECBD9382D8C709E002E596B /* CanvasTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBD9372D8C7097002E596B /* CanvasTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +65,11 @@
 		CEC8A68D2D8A1450009A48FC /* AddVectorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorPresenter.swift; sourceTree = "<group>"; };
 		CEC8A68F2D8A14A9009A48FC /* AddVectorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorRouter.swift; sourceTree = "<group>"; };
 		CEC8A6912D8A190C009A48FC /* AddVectorConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorConfigurator.swift; sourceTree = "<group>"; };
+		CEC8A6962D8B2727009A48FC /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		CEC8A6982D8B2A71009A48FC /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
+		CEC8A69A2D8B2BE8009A48FC /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		CEC8A69C2D8B3973009A48FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		CECBD9372D8C7097002E596B /* CanvasTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,10 +102,11 @@
 		CE080CF02D8894A100429809 /* Align2D */ = {
 			isa = PBXGroup;
 			children = (
+				CEC8A6932D8B26F0009A48FC /* Views */,
 				CE080D132D88C5FF00429809 /* Canvas */,
-				CE080CFD2D88957A00429809 /* Main */,
-				CEC8A6842D8A0A6E009A48FC /* AddVector */,
-				CEC8A6812D8A07F4009A48FC /* SideMenu */,
+				CE080CFD2D88957A00429809 /* MainViewController */,
+				CEC8A6842D8A0A6E009A48FC /* AddVectorViewController */,
+				CEC8A6812D8A07F4009A48FC /* SideMenuViewController */,
 				CE080CFC2D88951500429809 /* Models */,
 				CE080CFE2D88968D00429809 /* Services */,
 				CE080D102D88A6D100429809 /* Extensions */,
@@ -133,7 +144,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		CE080CFD2D88957A00429809 /* Main */ = {
+		CE080CFD2D88957A00429809 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
 				CE080CEF2D8894A100429809 /* MainViewController.swift */,
@@ -144,7 +155,7 @@
 				CE080D0C2D889F2F00429809 /* MainModel.swift */,
 				CE080D052D8896C300429809 /* MainConfigurator.swift */,
 			);
-			path = Main;
+			path = MainViewController;
 			sourceTree = "<group>";
 		};
 		CE080CFE2D88968D00429809 /* Services */ = {
@@ -167,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				CE080D112D88A6D800429809 /* Extension + UIColor.swift */,
+				CEC8A6982D8B2A71009A48FC /* Extension + UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -175,19 +187,20 @@
 			isa = PBXGroup;
 			children = (
 				CE080D142D88C60700429809 /* CanvasScene.swift */,
+				CECBD9372D8C7097002E596B /* CanvasTest.swift */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
 		};
-		CEC8A6812D8A07F4009A48FC /* SideMenu */ = {
+		CEC8A6812D8A07F4009A48FC /* SideMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
 				CEC8A6822D8A0812009A48FC /* SideMenuViewController.swift */,
 			);
-			path = SideMenu;
+			path = SideMenuViewController;
 			sourceTree = "<group>";
 		};
-		CEC8A6842D8A0A6E009A48FC /* AddVector */ = {
+		CEC8A6842D8A0A6E009A48FC /* AddVectorViewController */ = {
 			isa = PBXGroup;
 			children = (
 				CEC8A6852D8A0A89009A48FC /* AddVectorViewController.swift */,
@@ -198,7 +211,17 @@
 				CEC8A68F2D8A14A9009A48FC /* AddVectorRouter.swift */,
 				CEC8A6912D8A190C009A48FC /* AddVectorConfigurator.swift */,
 			);
-			path = AddVector;
+			path = AddVectorViewController;
+			sourceTree = "<group>";
+		};
+		CEC8A6932D8B26F0009A48FC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CEC8A6962D8B2727009A48FC /* TextField.swift */,
+				CEC8A69A2D8B2BE8009A48FC /* Label.swift */,
+				CEC8A69C2D8B3973009A48FC /* Button.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,10 +297,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC8A69D2D8B3973009A48FC /* Button.swift in Sources */,
 				CE080CF22D8894A100429809 /* VectorEntity.xcdatamodeld in Sources */,
+				CEC8A69B2D8B2BE8009A48FC /* Label.swift in Sources */,
 				CE080D062D8896C700429809 /* MainConfigurator.swift in Sources */,
 				CEC8A68A2D8A135A009A48FC /* AddVectorWorker.swift in Sources */,
 				CE080D042D8896BA00429809 /* MainRouter.swift in Sources */,
+				CEC8A6972D8B2727009A48FC /* TextField.swift in Sources */,
 				CEC8A6862D8A0A89009A48FC /* AddVectorViewController.swift in Sources */,
 				CEC8A6922D8A1913009A48FC /* AddVectorConfigurator.swift in Sources */,
 				CE080D022D8896B200429809 /* MainPresenter.swift in Sources */,
@@ -289,10 +315,12 @@
 				CE080D122D88A6E200429809 /* Extension + UIColor.swift in Sources */,
 				CEC8A6882D8A12C5009A48FC /* AddVectorModel.swift in Sources */,
 				CE080D0F2D88A2FC00429809 /* VectorModel.swift in Sources */,
+				CECBD9382D8C709E002E596B /* CanvasTest.swift in Sources */,
 				CE080D152D88C60C00429809 /* CanvasScene.swift in Sources */,
 				CE080D092D88975F00429809 /* StorageManager.swift in Sources */,
 				CEC8A68E2D8A1456009A48FC /* AddVectorPresenter.swift in Sources */,
 				CE080D0B2D889F1200429809 /* MainWorker.swift in Sources */,
+				CEC8A6992D8B2A77009A48FC /* Extension + UIView.swift in Sources */,
 				CEC8A6832D8A081F009A48FC /* SideMenuViewController.swift in Sources */,
 				CE080CF52D8894A100429809 /* MainViewController.swift in Sources */,
 				CEC8A68C2D8A1401009A48FC /* AddVectorInteractor.swift in Sources */,

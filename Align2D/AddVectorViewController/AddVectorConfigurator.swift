@@ -18,8 +18,10 @@ final class AddVectorConfigurator {
 
         interactor.presenter = presenter
         interactor.worker = worker
+
         presenter.viewController = viewController
         router.viewController = viewController
+
         viewController.interactor = interactor
         viewController.router = router
     }

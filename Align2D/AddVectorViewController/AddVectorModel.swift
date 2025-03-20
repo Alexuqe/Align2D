@@ -18,7 +18,7 @@ enum AddVectorModel {
             let color: UIColor
         }
 
-        struct Responce {
+        struct Response {
             let succes: Bool
         }
 
