@@ -35,6 +35,7 @@
 		CEC8A69B2D8B2BE8009A48FC /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A69A2D8B2BE8009A48FC /* Label.swift */; };
 		CEC8A69D2D8B3973009A48FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A69C2D8B3973009A48FC /* Button.swift */; };
 		CECBD9382D8C709E002E596B /* CanvasTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBD9372D8C7097002E596B /* CanvasTest.swift */; };
+		CECBD93A2D8CA5F3002E596B /* Extension + Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBD9392D8CA5EA002E596B /* Extension + Collection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		CEC8A69A2D8B2BE8009A48FC /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		CEC8A69C2D8B3973009A48FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CECBD9372D8C7097002E596B /* CanvasTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasTest.swift; sourceTree = "<group>"; };
+		CECBD9392D8CA5EA002E596B /* Extension + Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Collection.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 			children = (
 				CE080D112D88A6D800429809 /* Extension + UIColor.swift */,
 				CEC8A6982D8B2A71009A48FC /* Extension + UIView.swift */,
+				CECBD9392D8CA5EA002E596B /* Extension + Collection.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				CE080CF32D8894A100429809 /* AppDelegate.swift in Sources */,
 				CE080CF42D8894A100429809 /* SceneDelegate.swift in Sources */,
 				CE080D0D2D889F3200429809 /* MainModel.swift in Sources */,
+				CECBD93A2D8CA5F3002E596B /* Extension + Collection.swift in Sources */,
 				CE080D002D8896A500429809 /* MainInteractor.swift in Sources */,
 				CEC8A6902D8A14AF009A48FC /* AddVectorRouter.swift in Sources */,
 				CE080D122D88A6E200429809 /* Extension + UIColor.swift in Sources */,
