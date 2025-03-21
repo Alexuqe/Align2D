@@ -4,36 +4,37 @@ import SpriteKit
  * CanvasScene - Основной класс для отображения и управления 2D-канвасом.
  * Обеспечивает отрисовку сетки, векторов и обработку жестов для взаимодействия.
  */
-class CanvasScene: SKScene {
-    // MARK: - Properties
+final class CanvasScene: SKScene {
+        // MARK: - Properties
 
-    /// Контейнерный узел, в который добавляются все элементы (сетка, векторы)
-    /// Позволяет перемещать все содержимое канваса как единое целое
+        /// Контейнерный узел, в который добавляются все элементы (сетка, векторы)
+        /// Позволяет перемещать все содержимое канваса как единое целое
     private let contentNode = SKNode()
+    private let gridNode = SKNode()
 
-    /// Интервал между линиями сетки в точках
+        /// Интервал между линиями сетки в точках
     private let gridSpacing: CGFloat = 30.0
 
-    /// Порог для прилипания в точках
-    /// Определяет радиус, в пределах которого точки будут "прилипать" друг к другу
+        /// Порог для прилипания в точках
+        /// Определяет радиус, в пределах которого точки будут "прилипать" друг к другу
     private let snapThreshold: CGFloat = 5.0
 
-    /// Выбранный для редактирования вектор (узел)
-    /// Хранит ссылку на текущий редактируемый вектор
+        /// Выбранный для редактирования вектор (узел)
+        /// Хранит ссылку на текущий редактируемый вектор
     private var selectedVector: SKShapeNode?
 
-    /// Менеджер для сохранения состояния векторов
+        /// Менеджер для сохранения состояния векторов
     private let storageManager = StorageManager.shared
 
-    /// Тип редактируемой точки: начальная или конечная
-    /// Используется при перетаскивании точек вектора
+        /// Тип редактируемой точки: начальная или конечная
+        /// Используется при перетаскивании точек вектора
     enum MovingPointType {
         case startPoint
         case endPoint
     }
     private var movingPointType: MovingPointType?
 
-    // MARK: - Lifecycle Methods
+        // MARK: - Lifecycle Methods
 
     /**
      * didMove(to view: SKView)
@@ -61,7 +62,7 @@ class CanvasScene: SKScene {
     private func setupScene() {
         configureSceneBasics()
         setupContentNode()
-        drawGrid()
+        setupStaticLargeGrid()
     }
 
     /**
@@ -73,9 +74,9 @@ class CanvasScene: SKScene {
      * Возвращает: void
      */
     private func configureSceneBasics() {
-        // anchorPoint определяет точку в сцене, которая совпадает с центром view
+            // anchorPoint определяет точку в сцене, которая совпадает с центром view
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        // Устанавливает белый цвет фона сцены
+            // Устанавливает белый цвет фона сцены
         self.backgroundColor = .white
     }
 
@@ -89,12 +90,14 @@ class CanvasScene: SKScene {
      * Возвращает: void
      */
     private func setupContentNode() {
-        // Добавляем contentNode в иерархию узлов сцены
+            // Добавляем contentNode в иерархию узлов сцены
         addChild(contentNode)
-        // Устанавливаем начальную позицию в центр
+        addChild(gridNode)
+            // Устанавливаем начальную позицию в центр
         contentNode.position = CGPoint.zero
-        // Отключаем взаимодействие с пользователем
-        contentNode.isUserInteractionEnabled = false
+
+        gridNode.position = CGPoint.zero
+        gridNode.isUserInteractionEnabled = false
     }
 
     /**
@@ -121,7 +124,7 @@ class CanvasScene: SKScene {
         view.addGestureRecognizer(longPressGesture)
     }
 
-    // MARK: - Utility
+        // MARK: - Utility
     /**
      * distance(from:to:)
      * Вычисляет евклидово расстояние между двумя точками
@@ -141,64 +144,51 @@ class CanvasScene: SKScene {
     }
 }
     // MARK: - Grid Drawing
-    /**
-     * Grid Drawing Extension
-     * Расширение для отрисовки сетки на канвасе.
-     * Содержит методы для создания и настройки линий сетки.
-     */
+/**
+ * Grid Drawing Extension
+ * Расширение для отрисовки сетки на канвасе.
+ * Содержит методы для создания и настройки линий сетки.
+ */
 extension CanvasScene {
-    /**
-         * drawGrid()
-         * Рисует сетку на канвасе
-         * Входные параметры: нет
-         * Действия:
-         * 1. Вычисляет размеры сетки:
-         *    - halfWidth = ширина сцены / 2
-         *    - halfHeight = высота сцены / 2
-         * 2. Создает вертикальные линии:
-         *    - Вычисляет количество линий на основе ширины
-         *    - Для каждой линии:
-         *      a. Вычисляет x-координату
-         *      b. Создает путь от нижней до верхней границы
-         *      c. Создает SKShapeNode с этим путем
-         *      d. Настраивает внешний вид линии
-         *      e. Добавляет в contentNode
-         * 3. Создает горизонтальные линии (аналогично вертикальным)
-         * Возвращает: void
-         */
-    private func drawGrid() {
-        let halfWidth = size.width / 2.0
-        let halfHeight = size.height / 2.0
+    private func setupStaticLargeGrid() {
+            // Remove existing grid
+        gridNode.removeAllChildren()
 
-        let numberOfVerticalLines = Int(size.width / gridSpacing)
-        for line in 0...numberOfVerticalLines {
-            let x = -halfWidth + CGFloat(line) * gridSpacing
-            let path = CGMutablePath()
-            path.move(to: CGPoint(x: x, y: -halfHeight))
-            path.addLine(to: CGPoint(x: x, y: halfHeight))
-            let line = SKShapeNode(path: path)
-            line.strokeColor = .lightGray
-            line.lineWidth = 0.5
-            line.zPosition = -1  // Сетка рисуется позади
-            contentNode.isUserInteractionEnabled = false
-            contentNode.addChild(line)
+            // Set large grid size
+        let largeSize = CGSize(width: 10000, height: 10000)
+
+        let path = CGMutablePath()
+
+            // Calculate grid boundaries
+        let startX = -largeSize.width / 2
+        let startY = -largeSize.height / 2
+        let endX = largeSize.width / 2
+        let endY = largeSize.height / 2
+
+            // Add vertical lines
+        for x in stride(from: startX, through: endX, by: gridSpacing) {
+            path.move(to: CGPoint(x: x, y: startY))
+            path.addLine(to: CGPoint(x: x, y: endY))
         }
 
-        let numberOfHorizontalLines = Int(size.height / gridSpacing)
-        for line in 0...numberOfHorizontalLines {
-            let y = -halfHeight + CGFloat(line) * gridSpacing
-            let path = CGMutablePath()
-            path.move(to: CGPoint(x: -halfWidth, y: y))
-            path.addLine(to: CGPoint(x: halfWidth, y: y))
-            let line = SKShapeNode(path: path)
-            line.strokeColor = .lightGray
-            line.lineWidth = 0.5
-            line.zPosition = -1
-            contentNode.isUserInteractionEnabled = false
-            contentNode.addChild(line)
+            // Add horizontal lines
+        for y in stride(from: startY, through: endY, by: gridSpacing) {
+            path.move(to: CGPoint(x: startX, y: y))
+            path.addLine(to: CGPoint(x: endX, y: y))
         }
+
+        let gridLines = SKShapeNode(path: path)
+        gridLines.name = "grid"
+        gridLines.strokeColor = .systemGray4
+        gridLines.lineWidth = 0.4
+        gridLines.zPosition = -1000
+
+            // Add grid to gridNode
+        gridNode.addChild(gridLines)
     }
 }
+
+
 
     // MARK: - Vector Drawing
 /**
@@ -208,33 +198,32 @@ extension CanvasScene {
  */
 extension CanvasScene {
     /**
-         * addVector(vector:)
-         * Входные параметры:
-         * - vector: MainModel.ShowVectors.ViewModel.DisplayedVector - модель вектора
-         * Действия:
-         * 1. Создает линию вектора через createVectorLine
-         * 2. Настраивает параметры через configureVectorLine
-         * 3. Добавляет вектор на канвас
-         * 4. Логирует добавление
-         * Возвращает: void
-         */
+     * addVector(vector:)
+     * Входные параметры:
+     * - vector: MainModel.ShowVectors.ViewModel.DisplayedVector - модель вектора
+     * Действия:
+     * 1. Создает линию вектора через createVectorLine
+     * 2. Настраивает параметры через configureVectorLine
+     * 3. Добавляет вектор на канвас
+     * 4. Логирует добавление
+     * Возвращает: void
+     */
     func addVector(vector: MainModel.ShowVectors.ViewModel.DisplayedVector) {
         let line = createVectorLine(from: vector)
         configureVectorLine(line, with: vector)
-        addChild(line)
-        logVectorAddition(vector)
+        contentNode.addChild(line)
     }
 
     /**
-         * createVectorLine(from:)
-         * Входные параметры:
-         * - vector: MainModel.ShowVectors.ViewModel.DisplayedVector - модель вектора
-         * Действия:
-         * 1. Создает точки начала и конца из координат вектора
-         * 2. Создает SKShapeNode
-         * 3. Создает путь между точками
-         * Возвращает: SKShapeNode - узел с линией вектора
-         */
+     * createVectorLine(from:)
+     * Входные параметры:
+     * - vector: MainModel.ShowVectors.ViewModel.DisplayedVector - модель вектора
+     * Действия:
+     * 1. Создает точки начала и конца из координат вектора
+     * 2. Создает SKShapeNode
+     * 3. Создает путь между точками
+     * Возвращает: SKShapeNode - узел с линией вектора
+     */
     private func createVectorLine(from vector: MainModel.ShowVectors.ViewModel.DisplayedVector) -> SKShapeNode {
         let startPoint = CGPoint(x: vector.startX, y: vector.startY)
         let endPoint = CGPoint(x: vector.endX, y: vector.endY)
@@ -257,64 +246,60 @@ extension CanvasScene {
         line.lineWidth = 2.0
         line.name = "\(vector.id)"
     }
-
-    private func logVectorAddition(_ vector: MainModel.ShowVectors.ViewModel.DisplayedVector) {
-        print("Добавлена линия: start: (\(vector.startX), \(vector.startY)) end: (\(vector.endX), \(vector.endY))")
-    }
-
-    /// Очищает содержимое contentNode и заново рисует сетку.
+        /// Очищает содержимое contentNode и заново рисует сетку.
     func clearCanvas() {
         contentNode.removeAllChildren()
-        drawGrid()
     }
 }
 
     // MARK: - Gesture Handling
 
-    /**
-     * Gesture Handling Extension
-     * Расширение для обработки жестов пользователя.
-     * Обрабатывает панорамирование и редактирование векторов.
-     */
+/**
+ * Gesture Handling Extension
+ * Расширение для обработки жестов пользователя.
+ * Обрабатывает панорамирование и редактирование векторов.
+ */
 extension CanvasScene {
     /**
-         * handlePanGesture(_:)
-         * Входные параметры:
-         * - gesture: UIPanGestureRecognizer - распознаватель жеста
-         * Действия:
-         * 1. Получает view сцены
-         * 2. Получает смещение жеста
-         * 3. Асинхронно обновляет позицию contentNode
-         * 4. Сбрасывает смещение жеста
-         * Возвращает: void
-         */
+     * handlePanGesture(_:)
+     * Входные параметры:
+     * - gesture: UIPanGestureRecognizer - распознаватель жеста
+     * Действия:
+     * 1. Получает view сцены
+     * 2. Получает смещение жеста
+     * 3. Асинхронно обновляет позицию contentNode
+     * 4. Сбрасывает смещение жеста
+     * Возвращает: void
+     */
     @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         guard let view = self.view else { return }
         let translation = gesture.translation(in: view)
             // Обновляем позицию контейнера (contentNode)
-        DispatchQueue.main.async {
-            self.contentNode.position = CGPoint(
-                x: self.contentNode.position.x + translation.x,
-                y: self.contentNode.position.y - translation.y
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            let newPosition = CGPoint(
+                x: contentNode.position.x + translation.x,
+                y: contentNode.position.y + translation.y
             )
+            self.contentNode.position = newPosition
             gesture.setTranslation(.zero, in: view)
         }
     }
 
     /**
-         * handleLongPressGesture(_:)
-         * Входные параметры:
-         * - gesture: UILongPressGestureRecognizer - распознаватель жеста
-         * Действия:
-         * При начале жеста (.began):
-         * 1. Находит вектор под точкой касания
-         * 2. Определяет редактируемую точку
-         * При изменении (.changed):
-         * 1. Обновляет положение точки вектора
-         * При завершении (.ended, .cancelled):
-         * 1. Сбрасывает выбранный вектор
-         * Возвращает: void
-         */
+     * handleLongPressGesture(_:)
+     * Входные параметры:
+     * - gesture: UILongPressGestureRecognizer - распознаватель жеста
+     * Действия:
+     * При начале жеста (.began):
+     * 1. Находит вектор под точкой касания
+     * 2. Определяет редактируемую точку
+     * При изменении (.changed):
+     * 1. Обновляет положение точки вектора
+     * При завершении (.ended, .cancelled):
+     * 1. Сбрасывает выбранный вектор
+     * Возвращает: void
+     */
     @objc private func handleLongPressGesture(_ gesture: UILongPressGestureRecognizer) {
         guard let view = self.view else { return }
         let locationInView = gesture.location(in: view)
@@ -323,7 +308,10 @@ extension CanvasScene {
         switch gesture.state {
             case .began:
                     // Находим существующий узел (вектор) под касанием
-                if let vectorNode = nodes(at: sceneLocation).compactMap({ $0 as? SKShapeNode }).first {
+                if let vectorNode = nodes(at: sceneLocation)
+                    .filter({ $0.name != "grid" })
+                    .compactMap({ $0 as? SKShapeNode }).first {
+
                     selectedVector = vectorNode
                     movingPointType = detectMovingPoint(for: vectorNode, touchLocation: sceneLocation)
                 }
@@ -342,25 +330,26 @@ extension CanvasScene {
     }
 }
 
-// MARK: - Vector Editing Logic
+    // MARK: - Vector Editing Logic
 extension CanvasScene {
 
     /**
-         * detectMovingPoint(for:touchLocation:)
-         * Определяет, какую точку вектора (начало или конец) перемещает пользователь
-         * Входные параметры:
-         * - vectorNode: SKShapeNode - узел редактируемого вектора
-         * - touchLocation: CGPoint - точка касания на экране
-         * Действия:
-         * 1. Получает path вектора
-         * 2. Извлекает ограничивающий прямоугольник (boundingBox)
-         * 3. Определяет стартовую и конечную точки из прямоугольника
-         * 4. Вычисляет расстояния от точки касания до обеих точек
-         * 5. Возвращает тип точки на основе расстояний и порога прилипания
-         * Возвращает: MovingPointType? (.startPoint или .endPoint)
-         */
+     * detectMovingPoint(for:touchLocation:)
+     * Определяет, какую точку вектора (начало или конец) перемещает пользователь
+     * Входные параметры:
+     * - vectorNode: SKShapeNode - узел редактируемого вектора
+     * - touchLocation: CGPoint - точка касания на экране
+     * Действия:
+     * 1. Получает path вектора
+     * 2. Извлекает ограничивающий прямоугольник (boundingBox)
+     * 3. Определяет стартовую и конечную точки из прямоугольника
+     * 4. Вычисляет расстояния от точки касания до обеих точек
+     * 5. Возвращает тип точки на основе расстояний и порога прилипания
+     * Возвращает: MovingPointType? (.startPoint или .endPoint)
+     */
     private func detectMovingPoint(for vectorNode: SKShapeNode, touchLocation: CGPoint) -> MovingPointType? {
         guard let path = vectorNode.path else { return nil }
+
         let bbox = path.boundingBox
         let startPoint = CGPoint(x: bbox.minX, y: bbox.minY)
         let endPoint = CGPoint(x: bbox.maxX, y: bbox.maxY)
@@ -378,19 +367,19 @@ extension CanvasScene {
     }
 
     /**
-         * updateVector(vectorNode:pointType:newLocation:)
-         * Обновляет положение точки вектора с учетом прилипания
-         * Входные параметры:
-         * - vectorNode: SKShapeNode - узел редактируемого вектора
-         * - pointType: MovingPointType - тип перемещаемой точки
-         * - newLocation: CGPoint - новая позиция точки
-         * Действия:
-         * 1. Получает текущие точки вектора
-         * 2. Вычисляет новые координаты с прилипанием
-         * 3. Создает новый путь
-         * 4. Сохраняет изменения в хранилище
-         * Возвращает: void
-         */
+     * updateVector(vectorNode:pointType:newLocation:)
+     * Обновляет положение точки вектора с учетом прилипания
+     * Входные параметры:
+     * - vectorNode: SKShapeNode - узел редактируемого вектора
+     * - pointType: MovingPointType - тип перемещаемой точки
+     * - newLocation: CGPoint - новая позиция точки
+     * Действия:
+     * 1. Получает текущие точки вектора
+     * 2. Вычисляет новые координаты с прилипанием
+     * 3. Создает новый путь
+     * 4. Сохраняет изменения в хранилище
+     * Возвращает: void
+     */
     private func updateVector(vectorNode: SKShapeNode, pointType: MovingPointType, newLocation: CGPoint) {
         guard let path = vectorNode.path else { return }
         let points = getVectorPoints(from: path)
@@ -519,21 +508,21 @@ extension CanvasScene {
     }
 }
 
-// MARK: - Snapping & Angle Snapping
+    // MARK: - Snapping & Angle Snapping
 extension CanvasScene {
     /**
-         * applySnapping(to:startPoint:endPoint:vectorNode:)
-         * Применяет логику прилипания к точке
-         * Входные параметры:
-         * - point: CGPoint - исходная точка
-         * - startPoint: CGPoint - начальная точка вектора
-         * - endPoint: CGPoint - конечная точка вектора
-         * - vectorNode: SKShapeNode? - текущий редактируемый вектор
-         * Действия:
-         * 1. Проверяет прилипание к собственным точкам вектора
-         * 2. Проверяет прилипание к точкам других векторов
-         * Возвращает: CGPoint - новая позиция с учетом прилипания
-         */
+     * applySnapping(to:startPoint:endPoint:vectorNode:)
+     * Применяет логику прилипания к точке
+     * Входные параметры:
+     * - point: CGPoint - исходная точка
+     * - startPoint: CGPoint - начальная точка вектора
+     * - endPoint: CGPoint - конечная точка вектора
+     * - vectorNode: SKShapeNode? - текущий редактируемый вектор
+     * Действия:
+     * 1. Проверяет прилипание к собственным точкам вектора
+     * 2. Проверяет прилипание к точкам других векторов
+     * Возвращает: CGPoint - новая позиция с учетом прилипания
+     */
     private func applySnapping(to point: CGPoint, startPoint: CGPoint, endPoint: CGPoint, vectorNode: SKShapeNode?) -> CGPoint {
         var snappedPoint = point
         snappedPoint = applySnappingToOwnPoints(point: snappedPoint, startPoint: startPoint, endPoint: endPoint) // Применяем прилипание к собственным точкам
@@ -543,17 +532,17 @@ extension CanvasScene {
     }
 
     /**
-         * applyAngleSnapping(from:to:)
-         * Применяет выравнивание по углам (0° или 90°)
-         * Входные параметры:
-         * - anchor: CGPoint - неподвижная точка вектора
-         * - moving: CGPoint - перемещаемая точка
-         * Действия:
-         * 1. Вычисляет угол между точками
-         * 2. Если угол близок к 0° или 180° - выравнивает горизонтально
-         * 3. Если угол близок к 90° или -90° - выравнивает вертикально
-         * Возвращает: CGPoint - выровненная позиция
-         */
+     * applyAngleSnapping(from:to:)
+     * Применяет выравнивание по углам (0° или 90°)
+     * Входные параметры:
+     * - anchor: CGPoint - неподвижная точка вектора
+     * - moving: CGPoint - перемещаемая точка
+     * Действия:
+     * 1. Вычисляет угол между точками
+     * 2. Если угол близок к 0° или 180° - выравнивает горизонтально
+     * 3. Если угол близок к 90° или -90° - выравнивает вертикально
+     * Возвращает: CGPoint - выровненная позиция
+     */
     private func applySnappingToOwnPoints(point: CGPoint, startPoint: CGPoint, endPoint: CGPoint) -> CGPoint {
         var snappedPoint = point
 
@@ -577,18 +566,18 @@ extension CanvasScene {
     }
 
     /**
-         * applySnappingToOtherVectors(point:vectorNode:)
-         * Проверяет прилипание к точкам других векторов
-         * Входные параметры:
-         * - point: CGPoint - текущая точка
-         * - vectorNode: SKShapeNode? - текущий редактируемый вектор
-         * Действия:
-         * 1. Перебирает все векторы в contentNode
-         * 2. Для каждого вектора (кроме текущего):
-         *    - Получает его конечные точки
-         *    - Проверяет необходимость прилипания
-         * Возвращает: CGPoint - точка после прилипания
-         */
+     * applySnappingToOtherVectors(point:vectorNode:)
+     * Проверяет прилипание к точкам других векторов
+     * Входные параметры:
+     * - point: CGPoint - текущая точка
+     * - vectorNode: SKShapeNode? - текущий редактируемый вектор
+     * Действия:
+     * 1. Перебирает все векторы в contentNode
+     * 2. Для каждого вектора (кроме текущего):
+     *    - Получает его конечные точки
+     *    - Проверяет необходимость прилипания
+     * Возвращает: CGPoint - точка после прилипания
+     */
     private func applySnappingToOtherVectors(point: CGPoint, vectorNode: SKShapeNode?) -> CGPoint {
         var snappedPoint = point
 
@@ -608,15 +597,15 @@ extension CanvasScene {
     }
 
     /**
-         * getVectorEndPoints(from:)
-         * Извлекает конечные точки вектора из его пути
-         * Входные параметры:
-         * - path: CGPath - путь вектора
-         * Действия:
-         * 1. Получает ограничивающий прямоугольник пути
-         * 2. Создает точки из его границ
-         * Возвращает: (start: CGPoint, end: CGPoint)
-         */
+     * getVectorEndPoints(from:)
+     * Извлекает конечные точки вектора из его пути
+     * Входные параметры:
+     * - path: CGPath - путь вектора
+     * Действия:
+     * 1. Получает ограничивающий прямоугольник пути
+     * 2. Создает точки из его границ
+     * Возвращает: (start: CGPoint, end: CGPoint)
+     */
     private func getVectorEndPoints(from path: CGPath) -> (start: CGPoint, end: CGPoint) {
             // Получаем ограничивающий прямоугольник пути
         let bbox = path.boundingBox
@@ -673,27 +662,30 @@ extension CanvasScene {
     }
 
     /**
-         * applyAngleSnapping(from:to:)
-         * Применяет выравнивание по углам (0° или 90°)
-         * Входные параметры:
-         * - anchor: CGPoint - неподвижная точка вектора
-         * - moving: CGPoint - перемещаемая точка
-         * Действия:
-         * 1. Вычисляет угол между точками
-         * 2. Если угол близок к 0° или 180° - выравнивает горизонтально
-         * 3. Если угол близок к 90° или -90° - выравнивает вертикально
-         * Возвращает: CGPoint - новая позиция после выравнивания
-         */
+     * applyAngleSnapping(from:to:)
+     * Применяет выравнивание по углам (0° или 90°)
+     * Входные параметры:
+     * - anchor: CGPoint - неподвижная точка вектора
+     * - moving: CGPoint - перемещаемая точка
+     * Действия:
+     * 1. Вычисляет угол между точками
+     * 2. Если угол близок к 0° или 180° - выравнивает горизонтально
+     * 3. Если угол близок к 90° или -90° - выравнивает вертикально
+     * Возвращает: CGPoint - новая позиция после выравнивания
+     */
     private func applyAngleSnapping(from anchor: CGPoint, to moving: CGPoint) -> CGPoint {
-        // Вычисляем разницу координат
+            // Вычисляем разницу координат
         let dx = moving.x - anchor.x
         let dy = moving.y - anchor.y
 
-        // Вычисляем угол в градусах
-        let angle = atan2(dy, dx) * 180 / .pi
+            // Вычисляем угол в градусах
+        var angle = atan2(dy, dx) * 180 / .pi
+        if angle < 0 {
+            angle += 360
+        }
 
-        // Порог отклонения для срабатывания выравнивания
-        let threshold: CGFloat = 10.0
+            // Порог отклонения для срабатывания выравнивания
+        let threshold: CGFloat = 5
 
         var snapped = moving
             // Горизонтальное выравнивание: если угол близок к 0° или 180°.
@@ -701,9 +693,11 @@ extension CanvasScene {
             snapped.y = anchor.y
         }
             // Вертикальное выравнивание: если угол близок к 90° или -90°.
-        else if abs(angle - 90) < threshold || abs(angle + 90) < threshold {
+        else if abs(angle - 90) < threshold || abs(angle + 90) < threshold  {
             snapped.x = anchor.x
         }
         return snapped
     }
+
+
 }
