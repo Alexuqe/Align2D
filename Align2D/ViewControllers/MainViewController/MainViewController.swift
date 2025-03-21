@@ -47,6 +47,7 @@ final class MainViewController: UIViewController {
     }
     
     @objc private func routeToSideMenu() {
+        print("side Menu tapped")
         router?.routeToSideMenu()
     }
     

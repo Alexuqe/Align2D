@@ -15,12 +15,16 @@ protocol SideMenuDisplayLogic: AnyObject {
 
 final class SideMenuViewController: UIViewController {
 
+
+
+
     var interactor: SideMenuBuisnesLogic?
     var router: SideMenuRoutingLogic?
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
         SideMenuConfigurator.shared.configure(with: self)
     }
 }

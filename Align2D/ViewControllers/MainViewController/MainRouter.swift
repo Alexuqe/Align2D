@@ -1,9 +1,9 @@
-//
-//  MainRouter.swift
-//  Align2D
-//
-//  Created by Sasha on 17.03.25.
-//
+    //
+    //  MainRouter.swift
+    //  Align2D
+    //
+    //  Created by Sasha on 17.03.25.
+    //
 
 import UIKit
 
@@ -17,9 +17,10 @@ protocol MainRoutingLogic: AnyObject {
 final class MainRouter: NSObject, MainRoutingLogic {
 
     weak var viewController: MainViewController?
-    weak var sideMenu: SideMenuViewController?
-    weak var sideMenuCOnfigurator: SideMenuConfigurator?
+    weak var sideMenuVC: SideMenuViewController?
+    weak var sideMenuConfigurator = SideMenuConfigurator.shared
     private var addVectorConfig = AddVectorConfigurator.shared
+    
 
     func routeToAddVector() {
         let addVectorVC = AddVectorViewController()
@@ -44,45 +45,58 @@ final class MainRouter: NSObject, MainRoutingLogic {
     }
 
     func routeToSideMenu() {
-            // Убедимся, что viewController установлен
-        guard let mainVC = viewController else { return }
+        guard sideMenuVC == nil else {
+            print("SideMenu is already open")
+            return
+        }
 
-        if sideMenu == nil {
-                // Создаём экземпляр SideMenuViewController
-            let sideMenuVC = SideMenuViewController()
-            sideMenuCOnfigurator?.configure(with: sideMenuVC)
+        guard let viewControllerWidth = viewController?.view.bounds.width else {
+            print("Cannot get view controller width")
+            return
+        }
 
-                // Устанавливаем размеры и изначальную позицию SideMenu
-            let screenWidth = mainVC.view.bounds.width
-            let screenHeight = mainVC.view.bounds.height
-            let menuWidth = screenWidth * 0.33
-            sideMenuVC.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth, height: screenHeight)
+        let sideMenuWidth = viewControllerWidth * 0.33 // Fixed calculation
+        print("Creating SideMenu with width: \(sideMenuWidth)")
 
-                // Добавляем SideMenu как дочерний ViewController
-            mainVC.addChild(sideMenuVC)
-            mainVC.view.addSubview(sideMenuVC.view)
-            sideMenuVC.didMove(toParent: mainVC)
+        let sideMenuVC = SideMenuViewController()
+        sideMenuConfigurator?.configure(with: sideMenuVC)
+        self.sideMenuVC = sideMenuVC
 
-                // Сохраняем ссылку на SideMenu
-            self.sideMenu = sideMenuVC
+        sideMenuVC.view.frame = CGRect(
+            x: -sideMenuWidth,
+            y: 0,
+            width: sideMenuWidth,
+            height: viewController?.view.bounds.height ?? 0
+        )
 
-                // Анимация выезда меню
-            UIView.animate(withDuration: 0.3) {
-                sideMenuVC.view.frame.origin.x = 0
-            }
+        viewController?.addChild(sideMenuVC)
+        viewController?.view.addSubview(sideMenuVC.view)
+        sideMenuVC.didMove(toParent: viewController)
+
+        print("Starting SideMenu animation from x: \(sideMenuVC.view.frame.origin.x)")
+        UIView.animate(withDuration: 0.3) {
+            sideMenuVC.view.frame.origin.x = 0
+        } completion: { finished in
+            print("SideMenu animation completed: \(finished)")
         }
     }
-
+    
     func closeSideMenu(controller: SideMenuViewController) {
-
-        UIView.animate(withDuration: 0.3) {
-            controller.view.frame.origin.x = -controller.view.frame.width
-        } completion: { _ in
-            controller.willMove(toParent: nil)
-            controller.view.removeFromSuperview()
-            controller.removeFromParent()
-           
+        guard let sideMenuVC = sideMenuVC else {
+            print("No SideMenu to close")
+            return
         }
+        
+        print("Starting close animation")
+        UIView.animate(withDuration: 0.3, animations: {
+            sideMenuVC.view.frame.origin.x = -(sideMenuVC.view.bounds.width)
+        }, completion: { finished in
+            print("Close animation completed: \(finished)")
+            sideMenuVC.view.removeFromSuperview()
+            sideMenuVC.willMove(toParent: nil)
+            sideMenuVC.removeFromParent()
+            self.sideMenuVC = nil
+        })
     }
 
 

@@ -34,10 +34,11 @@ final class SideMenuInteractor: SideMenuBuisnesLogic {
         worker?.deleteVector(vector: request.vector, completion: { [weak self] result in
             guard let self else { return }
             switch result {
-                case .success(let success):
+                case .success:
                     let response = SideMenuDeleteResponse(vector: request.vector, success: true)
                     self.presenter?.presentVectorDelete(response: response)
-                case .failure(let failure):
+                    self.fetchVectors(request: SideMenuModel.ShowVectors.Request())
+                case .failure:
                     let response = SideMenuDeleteResponse(vector: request.vector, success: false)
                     self.presenter?.presentVectorDelete(response: response)
             }

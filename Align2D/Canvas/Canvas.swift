@@ -702,7 +702,7 @@ extension CanvasScene {
         }
 
             // Порог отклонения для срабатывания выравнивания
-        let threshold: CGFloat = 5
+        let threshold: CGFloat = 10
 
         var snapped = moving
             // Горизонтальное выравнивание: если угол близок к 0° или 180°.
