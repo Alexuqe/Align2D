@@ -217,7 +217,3 @@ extension AddVectorViewController: AddVectorDisplayLogic {
 
 
 }
-
-#Preview {
-    AddVectorViewController()
-}

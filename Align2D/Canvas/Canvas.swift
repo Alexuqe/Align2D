@@ -50,6 +50,23 @@ final class CanvasScene: SKScene {
         setupGestures(for: view)
     }
 
+    func highLightVector(by id: UUID) {
+        guard let vectorNode = contentNode.children
+            .first(where: { $0.name == id.uuidString }) as? SKShapeNode else { return }
+
+        vectorNode.lineWidth = 5.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            vectorNode.lineWidth = 2.0
+        }
+    }
+
+    func removeVector(by id: UUID) {
+        guard let vectorNode = contentNode.children.first(where: { $0.name == id.uuidString }) else { return }
+        vectorNode.removeFromParent()
+    }
+
+
+
     /**
      * setupScene()
      * Входные параметры: нет

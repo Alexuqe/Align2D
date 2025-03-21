@@ -10,6 +10,8 @@ import SpriteKit
 
 protocol MainDisplayLogic: AnyObject {
     func displayVectors(viewModel: MainModel.ShowVectors.ViewModel)
+    func higlightVector(id: UUID)
+    func removeVector(id: UUID)
 }
 
 final class MainViewController: UIViewController {
@@ -26,17 +28,18 @@ final class MainViewController: UIViewController {
         MainViewConfigurator.shared.configure(with: self)
         setupUI()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            interactor?.fetchVectors(request: MainModel.ShowVectors.Request())
-        }
-
+        super.viewWillAppear(animated)
+        interactor?.fetchVectors(request: MainModel.ShowVectors.Request())
+    }
+    
     private func setupUI() {
         view.backgroundColor = .white
         setupNavigationController()
         setupSKView()
         setupToolBar()
+        setupBarButton()
     }
     
     @objc private func addButtonAction() {
@@ -44,7 +47,7 @@ final class MainViewController: UIViewController {
     }
     
     @objc private func routeToSideMenu() {
-        interactor?.fetchVectors(request: MainModel.ShowVectors.Request())
+        router?.routeToSideMenu()
     }
     
 }
@@ -57,14 +60,14 @@ private extension MainViewController {
         skView.isUserInteractionEnabled = true
         skView.allowsTransparency = true
         skView.isMultipleTouchEnabled = true
-
+        
         view.addSubview(skView)
         
         canvasScene = CanvasScene(size: view.bounds.size)
         canvasScene.isUserInteractionEnabled = true
         canvasScene.scaleMode = .aspectFit
         skView.presentScene(canvasScene)
-
+        
         print("SKView setup complete - userInteraction: \(skView.isUserInteractionEnabled)")
     }
 }
@@ -110,6 +113,16 @@ private extension MainViewController {
         setupToolBarConstraints()
     }
     
+    func setupBarButton() {
+        let button = UIBarButtonItem(
+            barButtonSystemItem: .edit,
+            target: self,
+            action: #selector(routeToSideMenu)
+        )
+        
+        navigationItem.leftBarButtonItem = button
+    }
+    
     func createCustomButton() -> UIButton {
         let customButton = UIButton(type: .system)
         customButton.tintColor = .systemBlue
@@ -144,5 +157,15 @@ extension MainViewController: MainDisplayLogic {
             }
         }
     }
+    
+    func higlightVector(id: UUID) {
+        canvasScene.highLightVector(by: id)
+    }
+    
+    func removeVector(id: UUID) {
+        canvasScene.removeVector(by: id)
+    }
+    
+    
 }
 
