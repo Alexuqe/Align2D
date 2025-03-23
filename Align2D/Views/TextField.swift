@@ -9,7 +9,7 @@ import UIKit
 
 extension UITextField {
 
-    convenience init(palceholder: String) {
+    convenience init(placeholder: String) {
         self.init()
         self.placeholder = placeholder
         setupTextField()
@@ -19,7 +19,6 @@ extension UITextField {
         self.textColor = .black
         self.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         self.borderStyle = .roundedRect
-        self.keyboardType = .numberPad
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     

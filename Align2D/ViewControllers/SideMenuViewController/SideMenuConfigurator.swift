@@ -13,7 +13,9 @@ final class SideMenuConfigurator {
 
     private init() {}
 
-    func configure(with viewController: SideMenuViewController) {
+    func configure(with viewController: SideMenuViewController, mainVC: MainDisplayLogic?) {
+        print("SideMenuConfigurator: Starting configuration...")
+        
         let interactor = SideMenuInteractor()
         let presenter = SideMenuPresenter()
         let router = SideMenuRouter()
@@ -26,7 +28,10 @@ final class SideMenuConfigurator {
         interactor.worker = worker
 
         presenter.viewController = viewController
+        presenter.mainViewController = mainVC
         router.viewController = viewController
+
+        print("SideMenu configured. MainViewController set: \(mainVC != nil)")
     }
 
 }

@@ -50,15 +50,64 @@ final class CanvasScene: SKScene {
         setupGestures(for: view)
     }
 
-    func highLightVector(by id: UUID) {
-        guard let vectorNode = contentNode.children
-            .first(where: { $0.name == id.uuidString }) as? SKShapeNode else { return }
+//    func highLightVector(by id: UUID) {
+//        guard let vectorNode = contentNode.children
+//            .first(where: { $0.name == id.uuidString }) as? SKShapeNode else {
+//            print("Vector node not found for ID: \(id.uuidString)")
+//            return
+//        }
+//
+//        vectorNode.lineWidth = 20.0
+//        
+//        contentNode.children.forEach { node in
+//            if let shapeNode = node as? SKShapeNode {
+//                shapeNode.lineWidth = 2.0
+//            }
+//        }
+//
+//    }
 
-        vectorNode.lineWidth = 5.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            vectorNode.lineWidth = 2.0
+    func highLightVector(by id: UUID) {
+            print("CanvasScene: Starting highlight for vector ID: \(id.uuidString)")
+
+            // Сначала сбросим выделение всех векторов
+            contentNode.children.forEach { node in
+                if let shapeNode = node as? SKShapeNode {
+                    shapeNode.lineWidth = 2.0
+                    shapeNode.glowWidth = 0.0
+                }
+            }
+
+            // Найдем и выделим нужный вектор
+            guard let vectorNode = contentNode.children
+                .first(where: { $0.name == id.uuidString }) as? SKShapeNode else {
+                print("CanvasScene: Vector node not found for ID: \(id.uuidString)")
+                return
+            }
+
+            print("CanvasScene: Vector found, applying highlight")
+            vectorNode.lineWidth = 10.0
+            vectorNode.glowWidth = 1.0
+
+            // Добавим анимацию подсветки
+            let pulseAction = SKAction.sequence([
+                SKAction.scale(to: 1.1, duration: 0.2),
+                SKAction.scale(to: 1.0, duration: 0.2)
+            ])
+            vectorNode.run(pulseAction)
         }
-    }
+
+
+    func resetHighlight() {
+            print("CanvasScene: Resetting all vector highlights")
+            contentNode.children.forEach { node in
+                if let shapeNode = node as? SKShapeNode {
+                    shapeNode.lineWidth = 2.0
+                    shapeNode.glowWidth = 0.0
+                    shapeNode.setScale(1.0)
+                }
+            }
+        }
 
     func removeVector(by id: UUID) {
         guard let vectorNode = contentNode.children.first(where: { $0.name == id.uuidString }) else { return }
@@ -228,6 +277,7 @@ extension CanvasScene {
     func addVector(vector: MainModel.ShowVectors.ViewModel.DisplayedVector) {
         let line = createVectorLine(from: vector)
         configureVectorLine(line, with: vector)
+        line.name = vector.id.uuidString
         contentNode.addChild(line)
     }
 
@@ -261,7 +311,8 @@ extension CanvasScene {
     private func configureVectorLine(_ line: SKShapeNode, with vector: MainModel.ShowVectors.ViewModel.DisplayedVector) {
         line.strokeColor = UIColor(hexString: vector.color)
         line.lineWidth = 2.0
-        line.name = "\(vector.id)"
+        line.glowWidth = 0.0
+        line.lineCap = .round
     }
         /// Очищает содержимое contentNode и заново рисует сетку.
     func clearCanvas() {

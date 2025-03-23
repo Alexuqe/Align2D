@@ -11,6 +11,7 @@ import SpriteKit
 protocol MainDisplayLogic: AnyObject {
     func displayVectors(viewModel: MainModel.ShowVectors.ViewModel)
     func higlightVector(id: UUID)
+    func resetHiglight()
     func removeVector(id: UUID)
 }
 
@@ -18,11 +19,12 @@ final class MainViewController: UIViewController {
     
     var interactor: MainBusinessLogic?
     var router: MainRoutingLogic?
-    
+
     private var canvasScene = CanvasScene()
     private var skView = SKView()
     private var toolbar = UIToolbar()
-    
+    private var isActive = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         MainViewConfigurator.shared.configure(with: self)
@@ -47,10 +49,9 @@ final class MainViewController: UIViewController {
     }
     
     @objc private func routeToSideMenu() {
-        print("side Menu tapped")
         router?.routeToSideMenu()
     }
-    
+
 }
 
     //MARK: - Setup UI
@@ -92,7 +93,6 @@ private extension MainViewController {
     }
     
     func setupToolBar() {
-        
         let customButton = createCustomButton()
         let actionButton = UIBarButtonItem(customView: customButton)
         let flexibleSpace = UIBarButtonItem(
@@ -160,9 +160,14 @@ extension MainViewController: MainDisplayLogic {
     }
     
     func higlightVector(id: UUID) {
+        print("Vector in Main: \(id)")
         canvasScene.highLightVector(by: id)
     }
-    
+
+    func resetHiglight() {
+        canvasScene.resetHighlight()
+    }
+
     func removeVector(id: UUID) {
         canvasScene.removeVector(by: id)
     }

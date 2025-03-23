@@ -35,10 +35,10 @@ enum PointsText {
 final class AddVectorViewController: UIViewController {
 
         //MARK: UI Components
-    private let startXTextField = UITextField(palceholder: PointsText.startX.text)
-    private let startYTextField = UITextField(palceholder: PointsText.startY.text)
-    private let endXTextField = UITextField(palceholder: PointsText.endX.text)
-    private let endYTextField = UITextField(palceholder: PointsText.endY.text)
+    private let startXTextField = UITextField(placeholder: PointsText.startX.text)
+    private let startYTextField = UITextField(placeholder: PointsText.startY.text)
+    private let endXTextField = UITextField(placeholder: PointsText.endX.text)
+    private let endYTextField = UITextField(placeholder: PointsText.endY.text)
 
     private let startXLabel = UILabel(text: PointsText.startX.text)
     private let startYLabel = UILabel(text: PointsText.startY.text)
@@ -70,8 +70,8 @@ final class AddVectorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurator.configure(with: self)
         view.backgroundColor = .systemBackground
+        configurator.configure(with: self)
         setupUI()
     }
 
@@ -95,12 +95,21 @@ private extension AddVectorViewController {
         view.addSubviews(startXLabel, startYLabel, endXLabel, endYLabel)
         view.addSubviews(saveButton, cancelButton)
 
+
         setupStartXConstraints()
         setupStartYConstraints()
         setupEndXConstraints()
         setupEndYConstraints()
-
         setupConstraintsButtons()
+        
+        setupTextField(startXTextField, startYTextField, endXTextField, endYTextField)
+    }
+
+    func setupTextField(_ textFields: UITextField...) {
+        textFields.forEach { textField in
+            textField.delegate = self
+            textField.keyboardType = .numbersAndPunctuation
+        }
     }
 }
 
@@ -174,8 +183,19 @@ extension AddVectorViewController {
             cancelButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+}
 
+extension AddVectorViewController: UITextFieldDelegate {
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
 }
 
 extension AddVectorViewController: AddVectorDisplayLogic {

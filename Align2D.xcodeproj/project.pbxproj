@@ -36,6 +36,7 @@
 		CEC8A69D2D8B3973009A48FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A69C2D8B3973009A48FC /* Button.swift */; };
 		CECBD9382D8C709E002E596B /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBD9372D8C7097002E596B /* Canvas.swift */; };
 		CECBD93A2D8CA5F3002E596B /* Extension + Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBD9392D8CA5EA002E596B /* Extension + Collection.swift */; };
+		CED44C932D8F5C31005EE0EF /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED44C922D8F5C31005EE0EF /* SideMenuCell.swift */; };
 		CEED79852D8DD72F008B0FE3 /* SideMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED79842D8DD729008B0FE3 /* SideMenuInteractor.swift */; };
 		CEED79872D8DD738008B0FE3 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED79862D8DD733008B0FE3 /* SideMenuModel.swift */; };
 		CEED79892D8DD740008B0FE3 /* SideMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED79882D8DD73B008B0FE3 /* SideMenuPresenter.swift */; };
@@ -76,6 +77,7 @@
 		CEC8A69C2D8B3973009A48FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CECBD9372D8C7097002E596B /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		CECBD9392D8CA5EA002E596B /* Extension + Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Collection.swift"; sourceTree = "<group>"; };
+		CED44C922D8F5C31005EE0EF /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		CEED79842D8DD729008B0FE3 /* SideMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInteractor.swift; sourceTree = "<group>"; };
 		CEED79862D8DD733008B0FE3 /* SideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
 		CEED79882D8DD73B008B0FE3 /* SideMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresenter.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		CEC8A6812D8A07F4009A48FC /* SideMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CED44C8F2D8F5661005EE0EF /* SideMenuCell */,
 				CEC8A6822D8A0812009A48FC /* SideMenuViewController.swift */,
 				CEED79842D8DD729008B0FE3 /* SideMenuInteractor.swift */,
 				CEED79862D8DD733008B0FE3 /* SideMenuModel.swift */,
@@ -238,6 +241,14 @@
 				CEC8A69C2D8B3973009A48FC /* Button.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CED44C8F2D8F5661005EE0EF /* SideMenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				CED44C922D8F5C31005EE0EF /* SideMenuCell.swift */,
+			);
+			path = SideMenuCell;
 			sourceTree = "<group>";
 		};
 		CEED79832D8DD6D3008B0FE3 /* ViewControllers */ = {
@@ -324,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC8A69D2D8B3973009A48FC /* Button.swift in Sources */,
+				CED44C932D8F5C31005EE0EF /* SideMenuCell.swift in Sources */,
 				CE080CF22D8894A100429809 /* VectorEntity.xcdatamodeld in Sources */,
 				CEED798D2D8DD754008B0FE3 /* SideMenuConfigurator.swift in Sources */,
 				CEC8A69B2D8B2BE8009A48FC /* Label.swift in Sources */,

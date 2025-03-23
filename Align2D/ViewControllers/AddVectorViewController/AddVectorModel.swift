@@ -11,10 +11,10 @@ enum AddVectorModel {
     
     enum AddNewVector {
         struct Request {
-            let startX: Double
-            let startY: Double
-            let endX: Double
-            let endY: Double
+            let startX: CGFloat
+            let startY: CGFloat
+            let endX: CGFloat
+            let endY: CGFloat
             let color: String
         }
 

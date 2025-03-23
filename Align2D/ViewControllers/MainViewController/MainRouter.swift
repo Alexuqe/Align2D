@@ -11,7 +11,7 @@ protocol MainRoutingLogic: AnyObject {
     func routeToAddVector()
     func handleAddedVector(vector: AddVectorModel.AddNewVector.Request)
     func routeToSideMenu()
-    func closeSideMenu(controller: SideMenuViewController)
+    func closeSideMenu()
 }
 
 final class MainRouter: NSObject, MainRoutingLogic {
@@ -20,7 +20,7 @@ final class MainRouter: NSObject, MainRoutingLogic {
     weak var sideMenuVC: SideMenuViewController?
     weak var sideMenuConfigurator = SideMenuConfigurator.shared
     private var addVectorConfig = AddVectorConfigurator.shared
-    
+    private var isActive = false
 
     func routeToAddVector() {
         let addVectorVC = AddVectorViewController()
@@ -45,6 +45,17 @@ final class MainRouter: NSObject, MainRoutingLogic {
     }
 
     func routeToSideMenu() {
+        isActive.toggle()
+        
+        switch isActive {
+            case true:
+                openSideMenu()
+            case false:
+                closeSideMenu()
+        }
+    }
+
+    func openSideMenu() {
         guard sideMenuVC == nil else {
             print("SideMenu is already open")
             return
@@ -55,11 +66,16 @@ final class MainRouter: NSObject, MainRoutingLogic {
             return
         }
 
+        guard let mainVC = viewController else {
+               print("Error: MainViewController is nil")
+               return
+           }
+
         let sideMenuWidth = viewControllerWidth * 0.33 // Fixed calculation
         print("Creating SideMenu with width: \(sideMenuWidth)")
 
         let sideMenuVC = SideMenuViewController()
-        sideMenuConfigurator?.configure(with: sideMenuVC)
+        sideMenuConfigurator?.configure(with: sideMenuVC, mainVC: mainVC)
         self.sideMenuVC = sideMenuVC
 
         sideMenuVC.view.frame = CGRect(
@@ -74,14 +90,15 @@ final class MainRouter: NSObject, MainRoutingLogic {
         sideMenuVC.didMove(toParent: viewController)
 
         print("Starting SideMenu animation from x: \(sideMenuVC.view.frame.origin.x)")
+
         UIView.animate(withDuration: 0.3) {
             sideMenuVC.view.frame.origin.x = 0
         } completion: { finished in
             print("SideMenu animation completed: \(finished)")
         }
     }
-    
-    func closeSideMenu(controller: SideMenuViewController) {
+
+    func closeSideMenu() {
         guard let sideMenuVC = sideMenuVC else {
             print("No SideMenu to close")
             return

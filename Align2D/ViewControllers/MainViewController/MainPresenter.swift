@@ -19,7 +19,8 @@ final class MainPresenter: MainPresentationLogic {
         print("Получено векторов: \(response.vectors.count)")
         let viewModel = MainModel.ShowVectors.ViewModel(
             vectors: response.vectors.map {
-                MainViewModels(
+                print("Processing vector with ID: \($0.id?.uuidString ?? "nil")")
+                return MainViewModels(
                     id: $0.id ?? UUID(),
                     startX: CGFloat($0.startX),
                     startY: CGFloat($0.startY),

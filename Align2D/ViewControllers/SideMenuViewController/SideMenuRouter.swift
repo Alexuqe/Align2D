@@ -6,19 +6,34 @@
 //
 
 import Foundation
+import UIKit
 
 
 protocol SideMenuRoutingLogic: AnyObject {
-    func highlightVector(id: UUID)
+    func closeSideMenu(controller: SideMenuViewController)
 }
 
 final class SideMenuRouter: SideMenuRoutingLogic {
 
     weak var viewController: SideMenuViewController?
 
-    func highlightVector(id: UUID) {
-//        NotificationCenter.default.post(name: .highlightVector, object: id)
+    func closeSideMenu(controller: SideMenuViewController) {
+        guard let sideMenuVC = viewController.self else {
+            print("No SideMenu to close")
+            return
+        }
+
+        print("Starting close animation")
+        UIView.animate(withDuration: 0.3, animations: {
+            sideMenuVC.view.frame.origin.x = -(sideMenuVC.view.bounds.width)
+        }, completion: { finished in
+            print("Close animation completed: \(finished)")
+            sideMenuVC.view.removeFromSuperview()
+            sideMenuVC.willMove(toParent: nil)
+            sideMenuVC.removeFromParent()
+            sideMenuVC.didMove(toParent: nil)
+        })
     }
-    
+
 
 }

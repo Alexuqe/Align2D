@@ -11,6 +11,7 @@ protocol SideMenuBuisnesLogic: AnyObject {
     func fetchVectors(request: SideMenuModel.ShowVectors.Request)
     func deleteVectors(request: SideMenuModel.DeleteVector.Request)
     func higlightVector(request: SideMenuModel.HiglightVector.Request)
+    func resetHighlight(request: SideMenuModel.ResetHighlight.Request)
 }
 
 final class SideMenuInteractor: SideMenuBuisnesLogic {
@@ -48,5 +49,9 @@ final class SideMenuInteractor: SideMenuBuisnesLogic {
     func higlightVector(request: SideMenuModel.HiglightVector.Request) {
         let response = SideMenuModel.HiglightVector.Responce(vector: request.vector)
         presenter?.presentHighlightVector(response: response)
+    }
+
+    func resetHighlight(request: SideMenuModel.ResetHighlight.Request) {
+        presenter?.presentResetHighlight()
     }
 }

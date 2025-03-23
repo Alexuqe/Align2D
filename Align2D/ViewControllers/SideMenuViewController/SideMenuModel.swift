@@ -9,6 +9,18 @@ import Foundation
 
 typealias SideMenuDeleteResponse = SideMenuModel.DeleteVector.Response
 typealias SideMenuShowVectorsRequest = SideMenuModel.ShowVectors.Request
+typealias SideViewModel = SideMenuModel.ShowVectors.ViewModel.DisplayedVector
+
+protocol SideMenuCellModelProtocol {
+    var identifier: String { get }
+    var cellHeight: Double { get }
+    var id: UUID { get }
+    var x: CGFloat { get }
+    var y: CGFloat { get }
+    var color: String { get }
+    var vector: VectorEntity { get set }
+    init(vectors: VectorEntity)
+}
 
 enum SideMenuModel {
     enum ShowVectors {
@@ -19,11 +31,39 @@ enum SideMenuModel {
         }
 
         struct ViewModel {
-            struct DisplayedVector {
-                let id: UUID
-                let coordinates: String
+            struct DisplayedVector: SideMenuCellModelProtocol {
+                var identifier: String {
+                    "VectorsCell"
+                }
+
+                var cellHeight: Double {
+                    40
+                }
+
+                var id: UUID {
+                    vector.id ?? UUID()
+                }
+
+                var x: CGFloat {
+                    vector.endX
+                }
+
+                var y: CGFloat {
+                    vector.endY
+                }
+
+                var color: String  {
+                    vector.color ?? ""
+                }
+
+                var vector: VectorEntity
+
+                init(vectors: VectorEntity) {
+                    self.vector = vectors
+                }
             }
-            let displayedVectors: [DisplayedVector]
+
+            let displayedVectors: [SideMenuCellModelProtocol]
         }
     }
 
@@ -49,6 +89,12 @@ enum SideMenuModel {
         }
 
         struct Responce {
+            let vector: VectorEntity
+        }
+    }
+
+    enum ResetHighlight {
+        struct Request {
             let vector: VectorEntity
         }
     }

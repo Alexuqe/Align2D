@@ -11,25 +11,20 @@ protocol SideMenuPresentationLogic {
     func presentVectors(response: SideMenuModel.ShowVectors.Response)
     func presentVectorDelete(response: SideMenuDeleteResponse)
     func presentHighlightVector(response: SideMenuModel.HiglightVector.Responce)
+    func presentResetHighlight()
 }
 
-
 final class SideMenuPresenter: SideMenuPresentationLogic {
-
-    
 
     weak var viewController: SideMenuDisplayLogic?
     weak var mainViewController: MainDisplayLogic?
 
     func presentVectors(response: SideMenuModel.ShowVectors.Response) {
-        let displayedVectors = response.vectors.map {
-            SideMenuModel.ShowVectors.ViewModel.DisplayedVector(
-                id: $0.id ?? UUID(),
-                coordinates: "x: \($0.endX), y: \($0.endY)"
-            )
+        let displayVectors: [SideMenuCellModelProtocol] = response.vectors.map {
+            SideViewModel(vectors: $0)
         }
 
-        let viewModel = SideMenuModel.ShowVectors.ViewModel(displayedVectors: displayedVectors)
+        let viewModel = SideMenuModel.ShowVectors.ViewModel(displayedVectors: displayVectors)
         viewController?.displayVectors(viewModel: viewModel)
     }
 
@@ -44,6 +39,10 @@ final class SideMenuPresenter: SideMenuPresentationLogic {
 
     func presentHighlightVector(response: SideMenuModel.HiglightVector.Responce) {
         mainViewController?.higlightVector(id: response.vector.id ?? UUID())
+    }
+
+    func presentResetHighlight() {
+        mainViewController?.resetHiglight()
     }
 
 
