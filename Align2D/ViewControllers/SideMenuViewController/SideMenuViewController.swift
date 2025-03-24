@@ -1,10 +1,3 @@
-//
-//  SideMenuViewController.swift
-//  Align2D
-//
-//  Created by Sasha on 18.03.25.
-//
-
 import UIKit
 
 protocol SideMenuDisplayLogic: AnyObject {
@@ -14,29 +7,24 @@ protocol SideMenuDisplayLogic: AnyObject {
 
 final class SideMenuViewController: UIViewController {
 
-    //MARK: UI Elements
+        //MARK: UI Elements
     private let tableView: UITableView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UITableView())
 
-    //MARK: - Properties
+        //MARK: - Properties
     var interactor: SideMenuBuisnesLogic?
     var router: SideMenuRoutingLogic?
     private var vectors: [SideMenuCellModelProtocol] = []
 
-    //MARK: - Initializer
+        //MARK: - Initializer
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
 
-    deinit {
-        print("Deinit")
-    }
-
-
-//    MARK: - Actions
+        //    MARK: - Actions
     @objc private func closedSideMenu() {
         router?.closeSideMenu(controller: self)
     }
@@ -71,12 +59,12 @@ private extension SideMenuViewController {
     }
 }
 
-//MARK: - TableView DataSource
+    //MARK: - TableView DataSource
 extension SideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         vectors.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let vectorsViewModel = vectors[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: vectorsViewModel.identifier, for: indexPath)
@@ -114,9 +102,23 @@ extension SideMenuViewController: UITableViewDelegate {
         let vectors = vectors[indexPath.row]
         interactor?.resetHighlight(request: SideMenuModel.ResetHighlight.Request(vector: vectors.vector))
     }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let vectors = vectors[indexPath.row]
+        if editingStyle == .delete {
+            showConfirmationAlert(vector: vectors.vector, message: "Вы действительно хотите удалить вектор?") { [weak self] in
+                guard let self else { return }
+                self.interactor?.deleteVectors(request: SideMenuModel.DeleteVector.Request(vector: vectors.vector))
+                self.vectors.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .left)
+                tableView.reloadData()
+            }
+        }
+    }
+
 }
 
-//MARK: - SideMenuDisplayLogic
+    //MARK: - SideMenuDisplayLogic
 extension SideMenuViewController: SideMenuDisplayLogic {
 
     func displayError(message: String) {

@@ -1,10 +1,3 @@
-    //
-    //  Storagemanager.swift
-    //  Align2D
-    //
-    //  Created by Sasha on 17.03.25.
-    //
-
 import CoreData
 import UIKit
 
@@ -33,7 +26,6 @@ final class StorageManager {
     }
 
         //MARK: - Core Data Methods
-
     func fetch(completion: @escaping (Result<[VectorEntity], Error>) -> Void) {
         backgroundViewContext.perform { [weak self] in
             guard let self else { return }
@@ -106,42 +98,42 @@ final class StorageManager {
         endX: Double,
         endY: Double,
         completion: @escaping (Result<Void, Error>) -> Void) {
-        backgroundViewContext.perform { [weak self] in
-            guard let self = self else { return }
+            backgroundViewContext.perform { [weak self] in
+                guard let self = self else { return }
 
-            let request: NSFetchRequest<VectorEntity> = VectorEntity.fetchRequest()
-            request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+                let request: NSFetchRequest<VectorEntity> = VectorEntity.fetchRequest()
+                request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
 
-            do {
-                let results = try self.backgroundViewContext.fetch(request)
+                do {
+                    let results = try self.backgroundViewContext.fetch(request)
 
-                if let vector = results.first {
-                    vector.startX = startX
-                    vector.startY = startY
-                    vector.endX = endX
-                    vector.endY = endY
+                    if let vector = results.first {
+                        vector.startX = startX
+                        vector.startY = startY
+                        vector.endX = endX
+                        vector.endY = endY
 
-                    try self.backgroundViewContext.save()
-                    DispatchQueue.main.async {
-                        completion(.success(()))
+                        try self.backgroundViewContext.save()
+                        DispatchQueue.main.async {
+                            completion(.success(()))
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            completion(
+                                .failure(
+                                    NSError(
+                                        domain: "UpdateError",
+                                        code: 404,
+                                        userInfo: [NSLocalizedDescriptionKey: "Vector not found"])))
+                        }
                     }
-                } else {
+                } catch {
                     DispatchQueue.main.async {
-                        completion(
-                            .failure(
-                                NSError(
-                                    domain: "UpdateError",
-                                    code: 404,
-                                    userInfo: [NSLocalizedDescriptionKey: "Vector not found"])))
+                        completion(.failure(error))
                     }
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    completion(.failure(error))
                 }
             }
         }
-    }
 }
 
     // MARK: - Core Data Saving support

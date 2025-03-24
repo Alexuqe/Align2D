@@ -1,11 +1,4 @@
-//
-//  Extension + SKShapeNode.swift
-//  Align2D
-//
-//  Created by Sasha on 24.03.25.
-//
 
-import Foundation
 import SpriteKit
 
 extension SKShapeNode {

@@ -1,9 +1,4 @@
-//
-//  AddVectorConfigurator.swift
-//  Align2D
-//
-//  Created by Sasha on 19.03.25.
-//
+
 
 final class AddVectorConfigurator {
     static let shared = AddVectorConfigurator()

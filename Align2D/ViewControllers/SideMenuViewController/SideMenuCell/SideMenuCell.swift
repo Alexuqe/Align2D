@@ -1,9 +1,3 @@
-    //
-    //  SideMenuCell.swift
-    //  Align2D
-    //
-    //  Created by Sasha on 22.03.25.
-    //
 
 import UIKit
 
@@ -21,9 +15,18 @@ final class SideMenuCell: UITableViewCell {
         return $0
     }(UIView())
 
-    private lazy var titleVector: UILabel = {
+    private lazy var titleLabel: UILabel = {
         $0.textAlignment = .center
-        $0.font = .systemFont(ofSize: 12, weight: .regular)
+        $0.font = .systemFont(ofSize: 12, weight: .medium)
+        $0.textColor = .darkText
+        $0.numberOfLines = 1
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UILabel())
+
+    private lazy var coordinatesLabel: UILabel = {
+        $0.textAlignment = .center
+        $0.font = .systemFont(ofSize: 10, weight: .regular)
         $0.textColor = .darkText
         $0.numberOfLines = 1
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +52,7 @@ final class SideMenuCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         selectionStyle = .none
-        containerView.addSubview(titleVector)
+        containerView.addSubviews(titleLabel, coordinatesLabel)
         contentView.addSubviews(containerView)
         setupConstraints()
     }
@@ -61,7 +64,8 @@ final class SideMenuCell: UITableViewCell {
     func setupCell() {
         guard let viewModel = viewModel as? SideViewModel else { return }
         containerView.layer.borderColor = UIColor(hexString: viewModel.color).cgColor
-        titleVector.text = String(format: "x: %.1f, y: %.1f", viewModel.x, viewModel.y)
+        coordinatesLabel.text = String(format: "x: %.1f, y: %.1f", viewModel.x, viewModel.y)
+        titleLabel.text = String(format: "Lenght: %.1f", viewModel.lenght)
         setupConstraints()
     }
 }
@@ -76,9 +80,16 @@ private extension SideMenuCell {
         ])
 
         NSLayoutConstraint.activate([
-            titleVector.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 5),
-            titleVector.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
-            titleVector.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 5),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
+            titleLabel.centerYAnchor.constraint(equalTo: containerView.topAnchor, constant: 10)
+        ])
+
+        NSLayoutConstraint.activate([
+            coordinatesLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 5),
+            coordinatesLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
+            coordinatesLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            coordinatesLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -5)
         ])
     }
 }

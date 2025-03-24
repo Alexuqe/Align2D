@@ -1,10 +1,3 @@
-    //
-    //  AddVectorInteractor.swift
-    //  Align2D
-    //
-    //  Created by Sasha on 18.03.25.
-    //
-
 import UIKit
 
 protocol AddVectorBusinessLogic {

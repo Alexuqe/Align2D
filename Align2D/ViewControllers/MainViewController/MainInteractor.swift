@@ -1,10 +1,3 @@
-    //
-    //  MainInteractor.swift
-    //  Align2D
-    //
-    //  Created by Sasha on 17.03.25.
-    //
-
 import UIKit
 
 protocol MainBusinessLogic {
@@ -43,10 +36,9 @@ final class MainInteractor: MainBusinessLogic {
         worker.saveVector(model: vectorModel) { [weak self] result in
             switch result {
                 case .success:
-                    print("Vector saved successfully!")
                     self?.fetchVectors(request: MainModel.ShowVectors.Request())
-                case .failure(let error):
-                    print("Ошибка сохранения вектора \(error)")
+                case .failure(_):
+                    break
             }
         }
     }

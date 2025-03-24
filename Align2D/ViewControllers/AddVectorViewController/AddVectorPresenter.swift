@@ -1,32 +1,24 @@
-    //
-    //  AddVectorPresenter.swift
-    //  Align2D
-    //
-    //  Created by Sasha on 18.03.25.
-    //
-
 import UIKit
 
 protocol AddVectorPresentationLogic {
     func presentAddVectorResult(response: AddVectorModel.AddNewVector.Response)
 }
 
+final class AddVectorPresenter: AddVectorPresentationLogic {
 
-enum Message {
-    case succes
-    case error
+    enum Message {
+        case succes
+        case error
 
-    var title: String {
-        switch self {
-            case .succes:
-                "Вектор успешно добавлен"
-            case .error:
-                "Ошибка при добавлении"
+        var title: String {
+            switch self {
+                case .succes:
+                    "Вектор успешно добавлен"
+                case .error:
+                    "Ошибка при добавлении"
+            }
         }
     }
-}
-
-final class AddVectorPresenter: AddVectorPresentationLogic {
 
     weak var viewController: AddVectorDisplayLogic?
 

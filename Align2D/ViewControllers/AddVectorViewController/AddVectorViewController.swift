@@ -1,10 +1,3 @@
-    //
-    //  AddVectorViewController.swift
-    //  Align2D
-    //
-    //  Created by Sasha on 18.03.25.
-    //
-
 import UIKit
 
 protocol AddVectorDisplayLogic: AnyObject {
@@ -12,38 +5,39 @@ protocol AddVectorDisplayLogic: AnyObject {
     func addVector()
 }
 
-enum PointsText {
-    case startX
-    case startY
-    case endX
-    case endY
-
-    var text: String {
-        switch self {
-            case .startX:
-                "Start x-point"
-            case .startY:
-                "Start y-point"
-            case .endX:
-                "End x-point"
-            case .endY:
-                "End y-point"
-        }
-    }
-}
 
 final class AddVectorViewController: UIViewController {
 
-        //MARK: UI Components
-    private let startXTextField = UITextField(placeholder: PointsText.startX.text)
-    private let startYTextField = UITextField(placeholder: PointsText.startY.text)
-    private let endXTextField = UITextField(placeholder: PointsText.endX.text)
-    private let endYTextField = UITextField(placeholder: PointsText.endY.text)
+    enum PointsText {
+        case startX
+        case startY
+        case endX
+        case endY
 
-    private let startXLabel = UILabel(text: PointsText.startX.text)
-    private let startYLabel = UILabel(text: PointsText.startY.text)
-    private let endXLabel = UILabel(text: PointsText.endX.text)
-    private let endYLabel = UILabel(text: PointsText.endY.text)
+        var text: String {
+            switch self {
+                case .startX:
+                    "Start x-point"
+                case .startY:
+                    "Start y-point"
+                case .endX:
+                    "End x-point"
+                case .endY:
+                    "End y-point"
+            }
+        }
+    }
+
+        //MARK: UI Components
+    private lazy var startXTextField = UITextField(placeholder: PointsText.startX.text)
+    private lazy var  startYTextField = UITextField(placeholder: PointsText.startY.text)
+    private lazy var  endXTextField = UITextField(placeholder: PointsText.endX.text)
+    private lazy var  endYTextField = UITextField(placeholder: PointsText.endY.text)
+
+    private lazy var  startXLabel = UILabel(text: PointsText.startX.text)
+    private lazy var  startYLabel = UILabel(text: PointsText.startY.text)
+    private lazy var  endXLabel = UILabel(text: PointsText.endX.text)
+    private lazy var  endYLabel = UILabel(text: PointsText.endY.text)
 
     private lazy var saveButton = UIButton(
         backgroundColor: .systemBlue,
@@ -64,20 +58,17 @@ final class AddVectorViewController: UIViewController {
         //MARK: - Properties
     var interactor: AddVectorBusinessLogic?
     var router: AddVectorRoutingLogic?
+    var mainInteractor: MainBusinessLogic?
 
     private let configurator = AddVectorConfigurator.shared
-    private let topAnchor: CGFloat = 70
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        configurator.configure(with: self)
         setupUI()
     }
 
-
     @objc private func buttonSaveAction() {
-        print("Save")
         addVector()
     }
     
@@ -91,18 +82,17 @@ final class AddVectorViewController: UIViewController {
 private extension AddVectorViewController {
 
     func setupUI() {
+        setupTextField(startXTextField, startYTextField, endXTextField, endYTextField)
+
         view.addSubviews(startXTextField, startYTextField, endXTextField, endYTextField)
         view.addSubviews(startXLabel, startYLabel, endXLabel, endYLabel)
         view.addSubviews(saveButton, cancelButton)
-
 
         setupStartXConstraints()
         setupStartYConstraints()
         setupEndXConstraints()
         setupEndYConstraints()
         setupConstraintsButtons()
-        
-        setupTextField(startXTextField, startYTextField, endXTextField, endYTextField)
     }
 
     func setupTextField(_ textFields: UITextField...) {
@@ -114,11 +104,11 @@ private extension AddVectorViewController {
 }
 
     //    MARK: - Setup Constraints
-extension AddVectorViewController {
+private extension AddVectorViewController {
 
     func setupStartXConstraints() {
         NSLayoutConstraint.activate([
-            startXLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topAnchor),
+            startXLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
             startXLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         ])
 
@@ -144,7 +134,7 @@ extension AddVectorViewController {
 
     func setupEndXConstraints() {
         NSLayoutConstraint.activate([
-            endXLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topAnchor),
+            endXLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
             endXLabel.leadingAnchor.constraint(equalTo: endXTextField.leadingAnchor),
         ])
 
@@ -202,10 +192,11 @@ extension AddVectorViewController: AddVectorDisplayLogic {
 
     func displayAddVectorResult(viewModel: AddVectorModel.AddNewVector.ViewModel) {
         if let succesMessage = viewModel.succesMessage {
-            print(succesMessage)
-            router?.closeAddVectorScreen()
+            showAlert(message: succesMessage) { [weak self] in
+                self?.router?.closeAddVectorScreen()
+            }
         } else if let errorMesage = viewModel.errorMesage {
-            print(errorMesage)
+            showAlert(message: errorMesage)
         }
     }
 
@@ -216,7 +207,7 @@ extension AddVectorViewController: AddVectorDisplayLogic {
             let endX = Double(endXTextField.text ?? ""),
             let endY = Double(endYTextField.text ?? "")
         else {
-            print("Некорректные данные")
+
             return
         }
 
@@ -230,10 +221,9 @@ extension AddVectorViewController: AddVectorDisplayLogic {
             color: randomColor.hexString
         )
 
-        print(request)
         interactor?.addVector(request: request)
-        router?.passVectorToMain(vector: request)
     }
-
-
 }
+
+
+

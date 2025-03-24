@@ -1,10 +1,3 @@
-    //
-    //  ViewController.swift
-    //  Align2D
-    //
-    //  Created by Sasha on 17.03.25.
-    //
-
 import UIKit
 import SpriteKit
 
@@ -12,7 +5,7 @@ protocol MainDisplayLogic: AnyObject {
     func displayVectors(viewModel: MainModel.ShowVectors.ViewModel)
     func higlightVector(id: UUID)
     func resetHiglight()
-    func removeVector(id: UUID)
+    func removeVector(vector: VectorEntity)
 }
 
 final class MainViewController: UIViewController {
@@ -23,7 +16,6 @@ final class MainViewController: UIViewController {
     private var canvasScene = CanvasScene()
     private var skView = SKView()
     private var toolbar = UIToolbar()
-    private var isActive = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +24,7 @@ final class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewDidAppear(animated)
         interactor?.fetchVectors(request: MainModel.ShowVectors.Request())
     }
     
@@ -50,6 +42,7 @@ final class MainViewController: UIViewController {
     
     @objc private func routeToSideMenu() {
         router?.routeToSideMenu()
+        setupBarButton()
     }
 
 }
@@ -79,8 +72,8 @@ private extension MainViewController {
     
     func setupNavigationController() {
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = .clear
         
         let navigationBar = navigationController?.navigationBar
         navigationBar?.tintColor = .systemBlue
@@ -99,29 +92,40 @@ private extension MainViewController {
             barButtonSystemItem: .flexibleSpace,
             target: nil,
             action: nil)
-        
+
+        // Создаем новый toolbar и настраиваем его прозрачность
         let appearance = UIToolbarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundColor = .clear
+
+        // Настраиваем toolbar
+        toolbar = UIToolbar()
         toolbar.standardAppearance = appearance
         toolbar.scrollEdgeAppearance = appearance
-        
-        toolbar.tintColor = .white
         toolbar.setItems([flexibleSpace, actionButton], animated: false)
-        toolbar.translatesAutoresizingMaskIntoConstraints = false
-        
+        toolbar.backgroundColor = .clear
+
+        // Убираем тень и делаем фон полностью прозрачным
+        toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
+        toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+
         view.addSubview(toolbar)
         setupToolBarConstraints()
     }
     
     func setupBarButton() {
-        let button = UIBarButtonItem(
-            barButtonSystemItem: .edit,
+        let barButton = UIBarButtonItem(
+            image: UIImage(systemName: "list.bullet.below.rectangle"),
+            style: .plain,
             target: self,
             action: #selector(routeToSideMenu)
         )
-        
-        navigationItem.leftBarButtonItem = button
+
+        guard let mainRouter = router as? MainRouter else { return }
+        let currentImage = mainRouter.isActive ? "xmark.app" : "list.bullet.rectangle.fill"
+        barButton.image = UIImage(systemName: currentImage)
+
+        navigationItem.leftBarButtonItem = barButton
     }
     
     func createCustomButton() -> UIButton {
@@ -137,10 +141,12 @@ private extension MainViewController {
     }
     
     func setupToolBarConstraints() {
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            toolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15),
             toolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            toolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15)
         ])
     }
 }
@@ -149,18 +155,15 @@ private extension MainViewController {
 extension MainViewController: MainDisplayLogic {
     
     func displayVectors(viewModel: MainModel.ShowVectors.ViewModel) {
-        print("Displaying vectors: \(viewModel.vectors.count)")
         DispatchQueue.main.async {
             self.canvasScene.clearCanvas()
             viewModel.vectors.forEach { vector in
-                print("Рисуем вектор: (\(vector.startX), \(vector.startY)) -> (\(vector.endX), \(vector.endY))")
                 self.canvasScene.addVector(vector: vector)
             }
         }
     }
     
     func higlightVector(id: UUID) {
-        print("Vector in Main: \(id)")
         canvasScene.highLightVector(by: id)
     }
 
@@ -168,8 +171,9 @@ extension MainViewController: MainDisplayLogic {
         canvasScene.resetHighlight()
     }
 
-    func removeVector(id: UUID) {
-        canvasScene.removeVector(by: id)
+    func removeVector(vector: VectorEntity) {
+        interactor?.deleteVector(request: MainModel.deleteVector.Request(vector: vector))
+        canvasScene.removeVector(by: vector.id ?? UUID())
     }
     
     

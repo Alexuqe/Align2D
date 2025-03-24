@@ -20,22 +20,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 
-    func sceneDidDisconnect(_ scene: UIScene) {
-        storageManager.saveContext()
-    }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        storageManager.saveContext()
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-        storageManager.saveContext()
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        storageManager.saveContext()
-    }
-
     func sceneDidEnterBackground(_ scene: UIScene) {
         storageManager.saveContext()
     }

@@ -1,10 +1,3 @@
-//
-//  SideMenuConfigurator.swift
-//  Align2D
-//
-//  Created by Sasha on 21.03.25.
-//
-
 import Foundation
 
 final class SideMenuConfigurator {
@@ -14,7 +7,6 @@ final class SideMenuConfigurator {
     private init() {}
 
     func configure(with viewController: SideMenuViewController, mainVC: MainDisplayLogic?) {
-        print("SideMenuConfigurator: Starting configuration...")
         
         let interactor = SideMenuInteractor()
         let presenter = SideMenuPresenter()
@@ -31,7 +23,6 @@ final class SideMenuConfigurator {
         presenter.mainViewController = mainVC
         router.viewController = viewController
 
-        print("SideMenu configured. MainViewController set: \(mainVC != nil)")
     }
 
 }

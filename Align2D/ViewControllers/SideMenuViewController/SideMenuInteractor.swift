@@ -1,10 +1,3 @@
-//
-//  SideMenuInteractro.swift
-//  Align2D
-//
-//  Created by Sasha on 21.03.25.
-//
-
 import Foundation
 
 protocol SideMenuBuisnesLogic: AnyObject {
@@ -38,10 +31,10 @@ final class SideMenuInteractor: SideMenuBuisnesLogic {
                 case .success:
                     let response = SideMenuDeleteResponse(vector: request.vector, success: true)
                     self.presenter?.presentVectorDelete(response: response)
-                    self.fetchVectors(request: SideMenuModel.ShowVectors.Request())
                 case .failure:
                     let response = SideMenuDeleteResponse(vector: request.vector, success: false)
                     self.presenter?.presentVectorDelete(response: response)
+                    self.fetchVectors(request: SideMenuModel.ShowVectors.Request())
             }
         })
     }

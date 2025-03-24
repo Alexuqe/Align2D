@@ -1,12 +1,4 @@
-//
-//  SideMenuWorker.swift
-//  Align2D
-//
-//  Created by Sasha on 21.03.25.
-//
-
 import Foundation
-
 
 final class SideMenuWorker {
 
