@@ -40,7 +40,7 @@ final class AddVectorViewController: UIViewController {
     private lazy var  endYLabel = UILabel(text: PointsText.endY.text)
 
     private lazy var saveButton = UIButton(
-        backgroundColor: .systemBlue,
+        backgroundColor: .darkText,
         foregroundColor: .white,
         title: "Save",
         target: self,
@@ -48,7 +48,7 @@ final class AddVectorViewController: UIViewController {
     )
 
     private lazy var cancelButton = UIButton(
-        backgroundColor: .systemRed,
+        backgroundColor: .systemRed.withAlphaComponent(0.5),
         foregroundColor: .white,
         title: "Cancel",
         target: self,

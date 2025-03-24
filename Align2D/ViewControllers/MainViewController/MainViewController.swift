@@ -76,7 +76,6 @@ private extension MainViewController {
         appearance.backgroundColor = .clear
         
         let navigationBar = navigationController?.navigationBar
-        navigationBar?.tintColor = .systemBlue
         navigationBar?.prefersLargeTitles = false
         title = "Align 2D"
         
@@ -124,13 +123,14 @@ private extension MainViewController {
         guard let mainRouter = router as? MainRouter else { return }
         let currentImage = mainRouter.isActive ? "xmark.app" : "list.bullet.rectangle.fill"
         barButton.image = UIImage(systemName: currentImage)
+        barButton.tintColor = .darkText
 
         navigationItem.leftBarButtonItem = barButton
     }
     
     func createCustomButton() -> UIButton {
         let customButton = UIButton(type: .system)
-        customButton.tintColor = .systemBlue
+        customButton.tintColor = .darkText
         customButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
         customButton.addTarget(self, action: #selector(addButtonAction), for: .touchUpInside)
         
