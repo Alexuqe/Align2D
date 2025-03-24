@@ -10,39 +10,42 @@
 		CE080CF22D8894A100429809 /* VectorEntity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE080CE62D8894A100429809 /* VectorEntity.xcdatamodeld */; };
 		CE080CF32D8894A100429809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080CE72D8894A100429809 /* AppDelegate.swift */; };
 		CE080CF42D8894A100429809 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080CEE2D8894A100429809 /* SceneDelegate.swift */; };
-		CE080CF52D8894A100429809 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080CEF2D8894A100429809 /* MainViewController.swift */; };
 		CE080CF62D8894A100429809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE080CE82D8894A100429809 /* Assets.xcassets */; };
 		CE080CF82D8894A100429809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE080CEB2D8894A100429809 /* LaunchScreen.storyboard */; };
-		CE080D002D8896A500429809 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080CFF2D88969800429809 /* MainInteractor.swift */; };
-		CE080D022D8896B200429809 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D012D8896AC00429809 /* MainPresenter.swift */; };
-		CE080D042D8896BA00429809 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D032D8896B500429809 /* MainRouter.swift */; };
-		CE080D062D8896C700429809 /* MainConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D052D8896C300429809 /* MainConfigurator.swift */; };
 		CE080D092D88975F00429809 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D082D88975A00429809 /* StorageManager.swift */; };
-		CE080D0B2D889F1200429809 /* MainWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D0A2D889F0E00429809 /* MainWorker.swift */; };
-		CE080D0D2D889F3200429809 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D0C2D889F2F00429809 /* MainModel.swift */; };
 		CE080D0F2D88A2FC00429809 /* VectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D0E2D88A2F400429809 /* VectorModel.swift */; };
 		CE080D122D88A6E200429809 /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE080D112D88A6D800429809 /* Extension + UIColor.swift */; };
-		CEC8A6832D8A081F009A48FC /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6822D8A0812009A48FC /* SideMenuViewController.swift */; };
-		CEC8A6862D8A0A89009A48FC /* AddVectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6852D8A0A89009A48FC /* AddVectorViewController.swift */; };
-		CEC8A6882D8A12C5009A48FC /* AddVectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6872D8A12BE009A48FC /* AddVectorModel.swift */; };
-		CEC8A68A2D8A135A009A48FC /* AddVectorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6892D8A1354009A48FC /* AddVectorWorker.swift */; };
-		CEC8A68C2D8A1401009A48FC /* AddVectorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A68B2D8A13FC009A48FC /* AddVectorInteractor.swift */; };
-		CEC8A68E2D8A1456009A48FC /* AddVectorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A68D2D8A1450009A48FC /* AddVectorPresenter.swift */; };
-		CEC8A6902D8A14AF009A48FC /* AddVectorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A68F2D8A14A9009A48FC /* AddVectorRouter.swift */; };
-		CEC8A6922D8A1913009A48FC /* AddVectorConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6912D8A190C009A48FC /* AddVectorConfigurator.swift */; };
+		CEC01A332D91C11200E97C0D /* TestCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A322D91C11200E97C0D /* TestCanvas.swift */; };
+		CEC01A362D91C12F00E97C0D /* Extension + UIBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A352D91C12F00E97C0D /* Extension + UIBezierPath.swift */; };
+		CEC01A372D91C12F00E97C0D /* Extension + SKShapeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A342D91C12F00E97C0D /* Extension + SKShapeNode.swift */; };
+		CEC01A542D91C17B00E97C0D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A472D91C17B00E97C0D /* MainViewController.swift */; };
+		CEC01A552D91C17B00E97C0D /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A442D91C17B00E97C0D /* MainModel.swift */; };
+		CEC01A562D91C17B00E97C0D /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A432D91C17B00E97C0D /* MainInteractor.swift */; };
+		CEC01A572D91C17B00E97C0D /* SideMenuConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A4C2D91C17B00E97C0D /* SideMenuConfigurator.swift */; };
+		CEC01A582D91C17B00E97C0D /* MainWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A482D91C17B00E97C0D /* MainWorker.swift */; };
+		CEC01A592D91C17B00E97C0D /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A452D91C17B00E97C0D /* MainPresenter.swift */; };
+		CEC01A5A2D91C17B00E97C0D /* AddVectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A3F2D91C17B00E97C0D /* AddVectorViewController.swift */; };
+		CEC01A5B2D91C17B00E97C0D /* SideMenuWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A522D91C17B00E97C0D /* SideMenuWorker.swift */; };
+		CEC01A5C2D91C17B00E97C0D /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A4A2D91C17B00E97C0D /* SideMenuCell.swift */; };
+		CEC01A5D2D91C17B00E97C0D /* SideMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A502D91C17B00E97C0D /* SideMenuRouter.swift */; };
+		CEC01A5E2D91C17B00E97C0D /* SideMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A4F2D91C17B00E97C0D /* SideMenuPresenter.swift */; };
+		CEC01A5F2D91C17B00E97C0D /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A512D91C17B00E97C0D /* SideMenuViewController.swift */; };
+		CEC01A602D91C17B00E97C0D /* AddVectorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A3E2D91C17B00E97C0D /* AddVectorRouter.swift */; };
+		CEC01A612D91C17B00E97C0D /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A4E2D91C17B00E97C0D /* SideMenuModel.swift */; };
+		CEC01A622D91C17B00E97C0D /* AddVectorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A402D91C17B00E97C0D /* AddVectorWorker.swift */; };
+		CEC01A632D91C17B00E97C0D /* AddVectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A3C2D91C17B00E97C0D /* AddVectorModel.swift */; };
+		CEC01A642D91C17B00E97C0D /* AddVectorConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A3A2D91C17B00E97C0D /* AddVectorConfigurator.swift */; };
+		CEC01A652D91C17B00E97C0D /* AddVectorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A3D2D91C17B00E97C0D /* AddVectorPresenter.swift */; };
+		CEC01A662D91C17B00E97C0D /* SideMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A4D2D91C17B00E97C0D /* SideMenuInteractor.swift */; };
+		CEC01A672D91C17B00E97C0D /* MainConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A422D91C17B00E97C0D /* MainConfigurator.swift */; };
+		CEC01A682D91C17B00E97C0D /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A462D91C17B00E97C0D /* MainRouter.swift */; };
+		CEC01A692D91C17B00E97C0D /* AddVectorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A3B2D91C17B00E97C0D /* AddVectorInteractor.swift */; };
+		CEC01A6B2D91C22D00E97C0D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC01A6A2D91C22D00E97C0D /* CustomButton.swift */; };
 		CEC8A6972D8B2727009A48FC /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6962D8B2727009A48FC /* TextField.swift */; };
 		CEC8A6992D8B2A77009A48FC /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A6982D8B2A71009A48FC /* Extension + UIView.swift */; };
 		CEC8A69B2D8B2BE8009A48FC /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A69A2D8B2BE8009A48FC /* Label.swift */; };
-		CEC8A69D2D8B3973009A48FC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A69C2D8B3973009A48FC /* Button.swift */; };
 		CECBD9382D8C709E002E596B /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBD9372D8C7097002E596B /* Canvas.swift */; };
 		CECBD93A2D8CA5F3002E596B /* Extension + Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBD9392D8CA5EA002E596B /* Extension + Collection.swift */; };
-		CED44C932D8F5C31005EE0EF /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED44C922D8F5C31005EE0EF /* SideMenuCell.swift */; };
-		CEED79852D8DD72F008B0FE3 /* SideMenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED79842D8DD729008B0FE3 /* SideMenuInteractor.swift */; };
-		CEED79872D8DD738008B0FE3 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED79862D8DD733008B0FE3 /* SideMenuModel.swift */; };
-		CEED79892D8DD740008B0FE3 /* SideMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED79882D8DD73B008B0FE3 /* SideMenuPresenter.swift */; };
-		CEED798B2D8DD749008B0FE3 /* SideMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED798A2D8DD745008B0FE3 /* SideMenuRouter.swift */; };
-		CEED798D2D8DD754008B0FE3 /* SideMenuConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED798C2D8DD74C008B0FE3 /* SideMenuConfigurator.swift */; };
-		CEED798F2D8DD766008B0FE3 /* SideMenuWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED798E2D8DD762008B0FE3 /* SideMenuWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,38 +55,41 @@
 		CE080CE92D8894A100429809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE080CEA2D8894A100429809 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE080CEE2D8894A100429809 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE080CEF2D8894A100429809 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CE080CF12D8894A100429809 /* VectorEntity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VectorEntity.xcdatamodel; sourceTree = "<group>"; };
-		CE080CFF2D88969800429809 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
-		CE080D012D8896AC00429809 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
-		CE080D032D8896B500429809 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
-		CE080D052D8896C300429809 /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
 		CE080D082D88975A00429809 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		CE080D0A2D889F0E00429809 /* MainWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWorker.swift; sourceTree = "<group>"; };
-		CE080D0C2D889F2F00429809 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		CE080D0E2D88A2F400429809 /* VectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorModel.swift; sourceTree = "<group>"; };
 		CE080D112D88A6D800429809 /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
-		CEC8A6822D8A0812009A48FC /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
-		CEC8A6852D8A0A89009A48FC /* AddVectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorViewController.swift; sourceTree = "<group>"; };
-		CEC8A6872D8A12BE009A48FC /* AddVectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorModel.swift; sourceTree = "<group>"; };
-		CEC8A6892D8A1354009A48FC /* AddVectorWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorWorker.swift; sourceTree = "<group>"; };
-		CEC8A68B2D8A13FC009A48FC /* AddVectorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorInteractor.swift; sourceTree = "<group>"; };
-		CEC8A68D2D8A1450009A48FC /* AddVectorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorPresenter.swift; sourceTree = "<group>"; };
-		CEC8A68F2D8A14A9009A48FC /* AddVectorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorRouter.swift; sourceTree = "<group>"; };
-		CEC8A6912D8A190C009A48FC /* AddVectorConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorConfigurator.swift; sourceTree = "<group>"; };
+		CEC01A322D91C11200E97C0D /* TestCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCanvas.swift; sourceTree = "<group>"; };
+		CEC01A342D91C12F00E97C0D /* Extension + SKShapeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + SKShapeNode.swift"; sourceTree = "<group>"; };
+		CEC01A352D91C12F00E97C0D /* Extension + UIBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIBezierPath.swift"; sourceTree = "<group>"; };
+		CEC01A3A2D91C17B00E97C0D /* AddVectorConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorConfigurator.swift; sourceTree = "<group>"; };
+		CEC01A3B2D91C17B00E97C0D /* AddVectorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorInteractor.swift; sourceTree = "<group>"; };
+		CEC01A3C2D91C17B00E97C0D /* AddVectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorModel.swift; sourceTree = "<group>"; };
+		CEC01A3D2D91C17B00E97C0D /* AddVectorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorPresenter.swift; sourceTree = "<group>"; };
+		CEC01A3E2D91C17B00E97C0D /* AddVectorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorRouter.swift; sourceTree = "<group>"; };
+		CEC01A3F2D91C17B00E97C0D /* AddVectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorViewController.swift; sourceTree = "<group>"; };
+		CEC01A402D91C17B00E97C0D /* AddVectorWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVectorWorker.swift; sourceTree = "<group>"; };
+		CEC01A422D91C17B00E97C0D /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
+		CEC01A432D91C17B00E97C0D /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		CEC01A442D91C17B00E97C0D /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		CEC01A452D91C17B00E97C0D /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		CEC01A462D91C17B00E97C0D /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		CEC01A472D91C17B00E97C0D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CEC01A482D91C17B00E97C0D /* MainWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWorker.swift; sourceTree = "<group>"; };
+		CEC01A4A2D91C17B00E97C0D /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
+		CEC01A4C2D91C17B00E97C0D /* SideMenuConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuConfigurator.swift; sourceTree = "<group>"; };
+		CEC01A4D2D91C17B00E97C0D /* SideMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInteractor.swift; sourceTree = "<group>"; };
+		CEC01A4E2D91C17B00E97C0D /* SideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
+		CEC01A4F2D91C17B00E97C0D /* SideMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresenter.swift; sourceTree = "<group>"; };
+		CEC01A502D91C17B00E97C0D /* SideMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRouter.swift; sourceTree = "<group>"; };
+		CEC01A512D91C17B00E97C0D /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		CEC01A522D91C17B00E97C0D /* SideMenuWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuWorker.swift; sourceTree = "<group>"; };
+		CEC01A6A2D91C22D00E97C0D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CEC8A6962D8B2727009A48FC /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		CEC8A6982D8B2A71009A48FC /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
 		CEC8A69A2D8B2BE8009A48FC /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		CEC8A69C2D8B3973009A48FC /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CECBD9372D8C7097002E596B /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		CECBD9392D8CA5EA002E596B /* Extension + Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Collection.swift"; sourceTree = "<group>"; };
-		CED44C922D8F5C31005EE0EF /* SideMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
-		CEED79842D8DD729008B0FE3 /* SideMenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuInteractor.swift; sourceTree = "<group>"; };
-		CEED79862D8DD733008B0FE3 /* SideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
-		CEED79882D8DD73B008B0FE3 /* SideMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresenter.swift; sourceTree = "<group>"; };
-		CEED798A2D8DD745008B0FE3 /* SideMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRouter.swift; sourceTree = "<group>"; };
-		CEED798C2D8DD74C008B0FE3 /* SideMenuConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuConfigurator.swift; sourceTree = "<group>"; };
-		CEED798E2D8DD762008B0FE3 /* SideMenuWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,20 +162,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		CE080CFD2D88957A00429809 /* MainViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CE080CEF2D8894A100429809 /* MainViewController.swift */,
-				CE080CFF2D88969800429809 /* MainInteractor.swift */,
-				CE080D012D8896AC00429809 /* MainPresenter.swift */,
-				CE080D032D8896B500429809 /* MainRouter.swift */,
-				CE080D0A2D889F0E00429809 /* MainWorker.swift */,
-				CE080D0C2D889F2F00429809 /* MainModel.swift */,
-				CE080D052D8896C300429809 /* MainConfigurator.swift */,
-			);
-			path = MainViewController;
-			sourceTree = "<group>";
-		};
 		CE080CFE2D88968D00429809 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +181,8 @@
 		CE080D102D88A6D100429809 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CEC01A342D91C12F00E97C0D /* Extension + SKShapeNode.swift */,
+				CEC01A352D91C12F00E97C0D /* Extension + UIBezierPath.swift */,
 				CE080D112D88A6D800429809 /* Extension + UIColor.swift */,
 				CEC8A6982D8B2A71009A48FC /* Extension + UIView.swift */,
 				CECBD9392D8CA5EA002E596B /* Extension + Collection.swift */,
@@ -200,63 +194,78 @@
 			isa = PBXGroup;
 			children = (
 				CECBD9372D8C7097002E596B /* Canvas.swift */,
+				CEC01A322D91C11200E97C0D /* TestCanvas.swift */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
 		};
-		CEC8A6812D8A07F4009A48FC /* SideMenuViewController */ = {
+		CEC01A412D91C17B00E97C0D /* AddVectorViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CED44C8F2D8F5661005EE0EF /* SideMenuCell */,
-				CEC8A6822D8A0812009A48FC /* SideMenuViewController.swift */,
-				CEED79842D8DD729008B0FE3 /* SideMenuInteractor.swift */,
-				CEED79862D8DD733008B0FE3 /* SideMenuModel.swift */,
-				CEED79882D8DD73B008B0FE3 /* SideMenuPresenter.swift */,
-				CEED798A2D8DD745008B0FE3 /* SideMenuRouter.swift */,
-				CEED798E2D8DD762008B0FE3 /* SideMenuWorker.swift */,
-				CEED798C2D8DD74C008B0FE3 /* SideMenuConfigurator.swift */,
-			);
-			path = SideMenuViewController;
-			sourceTree = "<group>";
-		};
-		CEC8A6842D8A0A6E009A48FC /* AddVectorViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CEC8A6852D8A0A89009A48FC /* AddVectorViewController.swift */,
-				CEC8A6872D8A12BE009A48FC /* AddVectorModel.swift */,
-				CEC8A6892D8A1354009A48FC /* AddVectorWorker.swift */,
-				CEC8A68B2D8A13FC009A48FC /* AddVectorInteractor.swift */,
-				CEC8A68D2D8A1450009A48FC /* AddVectorPresenter.swift */,
-				CEC8A68F2D8A14A9009A48FC /* AddVectorRouter.swift */,
-				CEC8A6912D8A190C009A48FC /* AddVectorConfigurator.swift */,
+				CEC01A3A2D91C17B00E97C0D /* AddVectorConfigurator.swift */,
+				CEC01A3B2D91C17B00E97C0D /* AddVectorInteractor.swift */,
+				CEC01A3C2D91C17B00E97C0D /* AddVectorModel.swift */,
+				CEC01A3D2D91C17B00E97C0D /* AddVectorPresenter.swift */,
+				CEC01A3E2D91C17B00E97C0D /* AddVectorRouter.swift */,
+				CEC01A3F2D91C17B00E97C0D /* AddVectorViewController.swift */,
+				CEC01A402D91C17B00E97C0D /* AddVectorWorker.swift */,
 			);
 			path = AddVectorViewController;
+			sourceTree = "<group>";
+		};
+		CEC01A492D91C17B00E97C0D /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEC01A422D91C17B00E97C0D /* MainConfigurator.swift */,
+				CEC01A432D91C17B00E97C0D /* MainInteractor.swift */,
+				CEC01A442D91C17B00E97C0D /* MainModel.swift */,
+				CEC01A452D91C17B00E97C0D /* MainPresenter.swift */,
+				CEC01A462D91C17B00E97C0D /* MainRouter.swift */,
+				CEC01A472D91C17B00E97C0D /* MainViewController.swift */,
+				CEC01A482D91C17B00E97C0D /* MainWorker.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		CEC01A4B2D91C17B00E97C0D /* SideMenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEC01A4A2D91C17B00E97C0D /* SideMenuCell.swift */,
+			);
+			path = SideMenuCell;
+			sourceTree = "<group>";
+		};
+		CEC01A532D91C17B00E97C0D /* SideMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEC01A4B2D91C17B00E97C0D /* SideMenuCell */,
+				CEC01A4C2D91C17B00E97C0D /* SideMenuConfigurator.swift */,
+				CEC01A4D2D91C17B00E97C0D /* SideMenuInteractor.swift */,
+				CEC01A4E2D91C17B00E97C0D /* SideMenuModel.swift */,
+				CEC01A4F2D91C17B00E97C0D /* SideMenuPresenter.swift */,
+				CEC01A502D91C17B00E97C0D /* SideMenuRouter.swift */,
+				CEC01A512D91C17B00E97C0D /* SideMenuViewController.swift */,
+				CEC01A522D91C17B00E97C0D /* SideMenuWorker.swift */,
+			);
+			path = SideMenuViewController;
 			sourceTree = "<group>";
 		};
 		CEC8A6932D8B26F0009A48FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				CEC8A6962D8B2727009A48FC /* TextField.swift */,
+				CEC01A6A2D91C22D00E97C0D /* CustomButton.swift */,
 				CEC8A69A2D8B2BE8009A48FC /* Label.swift */,
-				CEC8A69C2D8B3973009A48FC /* Button.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		CED44C8F2D8F5661005EE0EF /* SideMenuCell */ = {
-			isa = PBXGroup;
-			children = (
-				CED44C922D8F5C31005EE0EF /* SideMenuCell.swift */,
-			);
-			path = SideMenuCell;
 			sourceTree = "<group>";
 		};
 		CEED79832D8DD6D3008B0FE3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CE080CFD2D88957A00429809 /* MainViewController */,
-				CEC8A6842D8A0A6E009A48FC /* AddVectorViewController */,
-				CEC8A6812D8A07F4009A48FC /* SideMenuViewController */,
+				CEC01A412D91C17B00E97C0D /* AddVectorViewController */,
+				CEC01A492D91C17B00E97C0D /* MainViewController */,
+				CEC01A532D91C17B00E97C0D /* SideMenuViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -334,40 +343,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC8A69D2D8B3973009A48FC /* Button.swift in Sources */,
-				CED44C932D8F5C31005EE0EF /* SideMenuCell.swift in Sources */,
 				CE080CF22D8894A100429809 /* VectorEntity.xcdatamodeld in Sources */,
-				CEED798D2D8DD754008B0FE3 /* SideMenuConfigurator.swift in Sources */,
 				CEC8A69B2D8B2BE8009A48FC /* Label.swift in Sources */,
-				CE080D062D8896C700429809 /* MainConfigurator.swift in Sources */,
-				CEC8A68A2D8A135A009A48FC /* AddVectorWorker.swift in Sources */,
-				CE080D042D8896BA00429809 /* MainRouter.swift in Sources */,
-				CEED79892D8DD740008B0FE3 /* SideMenuPresenter.swift in Sources */,
 				CEC8A6972D8B2727009A48FC /* TextField.swift in Sources */,
-				CEED798F2D8DD766008B0FE3 /* SideMenuWorker.swift in Sources */,
-				CEC8A6862D8A0A89009A48FC /* AddVectorViewController.swift in Sources */,
-				CEED79852D8DD72F008B0FE3 /* SideMenuInteractor.swift in Sources */,
-				CEC8A6922D8A1913009A48FC /* AddVectorConfigurator.swift in Sources */,
-				CE080D022D8896B200429809 /* MainPresenter.swift in Sources */,
+				CEC01A332D91C11200E97C0D /* TestCanvas.swift in Sources */,
 				CE080CF32D8894A100429809 /* AppDelegate.swift in Sources */,
 				CE080CF42D8894A100429809 /* SceneDelegate.swift in Sources */,
-				CE080D0D2D889F3200429809 /* MainModel.swift in Sources */,
 				CECBD93A2D8CA5F3002E596B /* Extension + Collection.swift in Sources */,
-				CE080D002D8896A500429809 /* MainInteractor.swift in Sources */,
-				CEED79872D8DD738008B0FE3 /* SideMenuModel.swift in Sources */,
-				CEC8A6902D8A14AF009A48FC /* AddVectorRouter.swift in Sources */,
+				CEC01A362D91C12F00E97C0D /* Extension + UIBezierPath.swift in Sources */,
+				CEC01A542D91C17B00E97C0D /* MainViewController.swift in Sources */,
+				CEC01A552D91C17B00E97C0D /* MainModel.swift in Sources */,
+				CEC01A562D91C17B00E97C0D /* MainInteractor.swift in Sources */,
+				CEC01A572D91C17B00E97C0D /* SideMenuConfigurator.swift in Sources */,
+				CEC01A582D91C17B00E97C0D /* MainWorker.swift in Sources */,
+				CEC01A592D91C17B00E97C0D /* MainPresenter.swift in Sources */,
+				CEC01A5A2D91C17B00E97C0D /* AddVectorViewController.swift in Sources */,
+				CEC01A5B2D91C17B00E97C0D /* SideMenuWorker.swift in Sources */,
+				CEC01A5C2D91C17B00E97C0D /* SideMenuCell.swift in Sources */,
+				CEC01A5D2D91C17B00E97C0D /* SideMenuRouter.swift in Sources */,
+				CEC01A5E2D91C17B00E97C0D /* SideMenuPresenter.swift in Sources */,
+				CEC01A5F2D91C17B00E97C0D /* SideMenuViewController.swift in Sources */,
+				CEC01A602D91C17B00E97C0D /* AddVectorRouter.swift in Sources */,
+				CEC01A612D91C17B00E97C0D /* SideMenuModel.swift in Sources */,
+				CEC01A622D91C17B00E97C0D /* AddVectorWorker.swift in Sources */,
+				CEC01A632D91C17B00E97C0D /* AddVectorModel.swift in Sources */,
+				CEC01A642D91C17B00E97C0D /* AddVectorConfigurator.swift in Sources */,
+				CEC01A6B2D91C22D00E97C0D /* CustomButton.swift in Sources */,
+				CEC01A652D91C17B00E97C0D /* AddVectorPresenter.swift in Sources */,
+				CEC01A662D91C17B00E97C0D /* SideMenuInteractor.swift in Sources */,
+				CEC01A672D91C17B00E97C0D /* MainConfigurator.swift in Sources */,
+				CEC01A682D91C17B00E97C0D /* MainRouter.swift in Sources */,
+				CEC01A692D91C17B00E97C0D /* AddVectorInteractor.swift in Sources */,
+				CEC01A372D91C12F00E97C0D /* Extension + SKShapeNode.swift in Sources */,
 				CE080D122D88A6E200429809 /* Extension + UIColor.swift in Sources */,
-				CEC8A6882D8A12C5009A48FC /* AddVectorModel.swift in Sources */,
 				CE080D0F2D88A2FC00429809 /* VectorModel.swift in Sources */,
 				CECBD9382D8C709E002E596B /* Canvas.swift in Sources */,
-				CEED798B2D8DD749008B0FE3 /* SideMenuRouter.swift in Sources */,
 				CE080D092D88975F00429809 /* StorageManager.swift in Sources */,
-				CEC8A68E2D8A1456009A48FC /* AddVectorPresenter.swift in Sources */,
-				CE080D0B2D889F1200429809 /* MainWorker.swift in Sources */,
 				CEC8A6992D8B2A77009A48FC /* Extension + UIView.swift in Sources */,
-				CEC8A6832D8A081F009A48FC /* SideMenuViewController.swift in Sources */,
-				CE080CF52D8894A100429809 /* MainViewController.swift in Sources */,
-				CEC8A68C2D8A1401009A48FC /* AddVectorInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
