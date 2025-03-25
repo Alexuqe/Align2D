@@ -23,8 +23,9 @@ final class MainViewController: UIViewController {
         setupUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("MainViewController: viewWillAppear - fetching vectors")
         interactor?.fetchVectors(request: MainModel.ShowVectors.Request())
     }
     
@@ -62,8 +63,6 @@ private extension MainViewController {
         canvasScene.isUserInteractionEnabled = true
         canvasScene.scaleMode = .aspectFit
         skView.presentScene(canvasScene)
-        
-        print("SKView setup complete - userInteraction: \(skView.isUserInteractionEnabled)")
     }
 }
 

@@ -16,7 +16,6 @@ extension CanvasScene {
         // MARK: - Point Detection
     func detectMovingPoint(for vectorNode: SKShapeNode, touchLocation: CGPoint) -> MovingPointType? {
         guard let path = vectorNode.path else {
-            print("⚠\u{fef} Vector path is nil")
             return nil
         }
 

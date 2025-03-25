@@ -11,6 +11,10 @@ final class AddVectorConfigurator {
         let router = AddVectorRouter()
         let worker = AddVectorWorker()
 
+        if let mainVC = viewController.presentingViewController as? MainViewController {
+            router.mainInteractor = mainVC.interactor
+        }
+
         interactor.presenter = presenter
         interactor.worker = worker
 

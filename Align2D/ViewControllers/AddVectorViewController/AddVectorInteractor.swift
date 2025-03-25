@@ -8,7 +8,7 @@ final class AddVectorInteractor: AddVectorBusinessLogic {
     
     var presenter: AddVectorPresentationLogic?
     var worker: AddVectorWorker?
-    
+
     func addVector(request: AddVectorModel.AddNewVector.Request) {
         guard let worker = worker else { return }
         
