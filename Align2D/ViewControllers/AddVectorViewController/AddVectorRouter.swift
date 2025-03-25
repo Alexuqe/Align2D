@@ -11,8 +11,6 @@ final class AddVectorRouter: AddVectorRoutingLogic {
     var mainInteractor: MainBusinessLogic?
 
     func closeAddVectorScreen() {
-        self.viewController?.dismiss(animated: true) { [weak self] in
-            self?.mainInteractor?.fetchVectors(request: MainModel.ShowVectors.Request())
-        }
+        self.viewController?.dismiss(animated: true)
     }
 }

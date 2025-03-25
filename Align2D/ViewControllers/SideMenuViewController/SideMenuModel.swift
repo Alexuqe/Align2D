@@ -20,6 +20,7 @@ protocol SideMenuCellModelProtocol {
     var color: String { get }
     var lenght: Double { get }
     var vector: VectorEntity { get set }
+    
     init(vectors: VectorEntity)
 }
 
@@ -64,7 +65,7 @@ enum SideMenuModel {
                 }
                 
                 var vector: VectorEntity
-                
+
                 init(vectors: VectorEntity) {
                     self.vector = vectors
                 }
