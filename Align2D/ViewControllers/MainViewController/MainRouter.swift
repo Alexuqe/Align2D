@@ -17,8 +17,7 @@ final class MainRouter: NSObject, MainRoutingLogic {
     func routeToAddVector() {
         let addVectorVC = AddVectorViewController()
         addVectorConfig.configure(with: addVectorVC)
-        addVectorVC.modalPresentationStyle = .overFullScreen
-        addVectorVC.modalTransitionStyle = .crossDissolve
+        addVectorVC.modalPresentationStyle = .fullScreen
 
         guard let addVectorRouter = addVectorVC.router as? AddVectorRouter else { return }
         addVectorRouter.mainRouter = self
