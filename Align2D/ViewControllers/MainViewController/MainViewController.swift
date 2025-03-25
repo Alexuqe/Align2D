@@ -9,7 +9,7 @@ protocol MainDisplayLogic: AnyObject {
 }
 
 final class MainViewController: UIViewController {
-    
+
     var interactor: MainBusinessLogic?
     var router: MainRoutingLogic?
 
@@ -22,12 +22,12 @@ final class MainViewController: UIViewController {
         MainViewConfigurator.shared.configure(with: self)
         setupUI()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         interactor?.fetchVectors(request: MainModel.ShowVectors.Request())
     }
-    
+
     private func setupUI() {
         view.backgroundColor = .white
         setupNavigationController()
@@ -35,11 +35,11 @@ final class MainViewController: UIViewController {
         setupToolBar()
         setupBarButton()
     }
-    
+
     @objc private func addButtonAction() {
         router?.routeToAddVector()
     }
-    
+
     @objc private func routeToSideMenu() {
         router?.routeToSideMenu()
         setupBarButton()
@@ -49,15 +49,15 @@ final class MainViewController: UIViewController {
 
     //MARK: - Setup UI
 private extension MainViewController {
-    
+
     func setupSKView() {
         skView.frame = view.bounds
         skView.isUserInteractionEnabled = true
         skView.allowsTransparency = true
         skView.isMultipleTouchEnabled = true
-        
+
         view.addSubview(skView)
-        
+
         canvasScene = CanvasScene(size: view.bounds.size)
         canvasScene.isUserInteractionEnabled = true
         canvasScene.scaleMode = .aspectFit
@@ -67,21 +67,21 @@ private extension MainViewController {
 
     //MARK: Setup NavigationController
 private extension MainViewController {
-    
+
     func setupNavigationController() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundColor = .clear
-        
+
         let navigationBar = navigationController?.navigationBar
         navigationBar?.prefersLargeTitles = false
         title = "Align 2D"
-        
+
         navigationBar?.scrollEdgeAppearance = appearance
         navigationBar?.standardAppearance = appearance
         navigationBar?.compactAppearance = appearance
     }
-    
+
     func setupToolBar() {
         let customButton = createCustomButton()
         let actionButton = UIBarButtonItem(customView: customButton)
@@ -90,26 +90,24 @@ private extension MainViewController {
             target: nil,
             action: nil)
 
-        // Создаем новый toolbar и настраиваем его прозрачность
         let appearance = UIToolbarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundColor = .clear
 
-        // Настраиваем toolbar
         toolbar = UIToolbar()
         toolbar.standardAppearance = appearance
         toolbar.scrollEdgeAppearance = appearance
         toolbar.setItems([flexibleSpace, actionButton], animated: false)
         toolbar.backgroundColor = .clear
 
-        // Убираем тень и делаем фон полностью прозрачным
+            // Убираем тень и делаем фон полностью прозрачным
         toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
 
         view.addSubview(toolbar)
         setupToolBarConstraints()
     }
-    
+
     func setupBarButton() {
         let barButton = UIBarButtonItem(
             image: UIImage(systemName: "list.bullet.below.rectangle"),
@@ -125,22 +123,22 @@ private extension MainViewController {
 
         navigationItem.leftBarButtonItem = barButton
     }
-    
+
     func createCustomButton() -> UIButton {
         let customButton = UIButton(type: .system)
         customButton.tintColor = .darkText
         customButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
         customButton.addTarget(self, action: #selector(addButtonAction), for: .touchUpInside)
-        
+
         let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular, scale: .large)
         customButton.setPreferredSymbolConfiguration(config, forImageIn: .normal)
-        
+
         return customButton
     }
-    
+
     func setupToolBarConstraints() {
         toolbar.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             toolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -151,16 +149,16 @@ private extension MainViewController {
 
     //MARK: - MainDisplayLogic Methods
 extension MainViewController: MainDisplayLogic {
-    
+
     func displayVectors(viewModel: MainModel.ShowVectors.ViewModel) {
         DispatchQueue.main.async {
             self.canvasScene.clearCanvas()
-            viewModel.vectors.forEach { vector in
-                self.canvasScene.addVector(vector: vector)
+            viewModel.vectors.forEach {
+                self.canvasScene.addVector(vector: $0)
             }
         }
     }
-    
+
     func higlightVector(id: UUID) {
         canvasScene.highLightVector(by: id)
     }
@@ -173,7 +171,7 @@ extension MainViewController: MainDisplayLogic {
         interactor?.deleteVector(request: MainModel.deleteVector.Request(vector: vector))
         canvasScene.removeVector(by: vector.id ?? UUID())
     }
-    
-    
+
+
 }
 

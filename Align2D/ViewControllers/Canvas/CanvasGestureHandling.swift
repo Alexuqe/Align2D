@@ -2,7 +2,6 @@ import SpriteKit
 
 extension CanvasScene {
         // MARK: - Gesture Setup
-        // MARK: - Gesture Setup
     func setupGestures(for view: SKView) {
         let longPress = setupLongPressGesture(for: view)
         setupPanGesture(for: view, longPress: longPress)
@@ -149,17 +148,27 @@ extension CanvasScene {
         
         switch pointType {
             case .startPoint, .endPoint:
-                handleEndpointMovement(vectorNode: vectorNode, pointType: pointType,
-                                       currentPoints: currentPoints, newLocation: &newLocation)
+                handleEndpointMovement(
+                    vectorNode: vectorNode,
+                    pointType: pointType,
+                    currentPoints: currentPoints,
+                    newLocation: &newLocation
+                )
             case .wholeVector:
-                handleWholeVectorMovement(vectorNode: vectorNode, currentPoints: currentPoints,
-                                          newLocation: newLocation)
+                handleWholeVectorMovement(
+                    vectorNode: vectorNode,
+                    currentPoints: currentPoints,
+                    newLocation: newLocation
+                )
         }
     }
     
-    private func handleEndpointMovement(vectorNode: SKShapeNode, pointType: MovingPointType,
-                                        currentPoints: (start: CGPoint, end: CGPoint),
-                                        newLocation: inout CGPoint) {
+    private func handleEndpointMovement(
+        vectorNode: SKShapeNode,
+        pointType: MovingPointType,
+        currentPoints: (start: CGPoint, end: CGPoint),
+        newLocation: inout CGPoint
+    ) {
         let referencePoint = pointType == .startPoint ? currentPoints.end : currentPoints.start
         newLocation = snapToAxes(point: newLocation, relativeTo: referencePoint)
         
@@ -169,8 +178,11 @@ extension CanvasScene {
         updateVectorPath(vectorNode: vectorNode, pointType: pointType, newLocation: newLocation)
     }
     
-    private func handleRightAngleUpdate(for vectorNode: SKShapeNode, at newLocation: CGPoint,
-                                        pointType: MovingPointType) {
+    private func handleRightAngleUpdate(
+        for vectorNode: SKShapeNode,
+        at newLocation: CGPoint,
+        pointType: MovingPointType
+    ) {
         if rightAngleMarker != nil {
             checkAndUpdateRightAngle(for: vectorNode, at: newLocation, pointType: pointType)
         }

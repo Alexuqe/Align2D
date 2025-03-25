@@ -3,7 +3,7 @@ import SpriteKit
 extension CanvasScene {
         // MARK: - Vector Drawing
 
-    func addVector(vector: MainViewModels) {
+    func addVector(vector: MainModelProtocol) {
         let path = UIBezierPath()
         path.addArrow(start: CGPoint(x: vector.startX, y: vector.startY),
                       end: CGPoint(x: vector.endX, y: vector.endY))
@@ -18,7 +18,12 @@ extension CanvasScene {
     }
 
         // MARK: - Vector Movement
-    func moveWholeVector(vectorNode: SKShapeNode, from currentPoints: (start: CGPoint, end: CGPoint), to newLocation: CGPoint) {
+    func moveWholeVector(
+        vectorNode: SKShapeNode,
+        from currentPoints: (start: CGPoint, end: CGPoint),
+        to newLocation: CGPoint
+    ) {
+        
         let translation = CGPoint(
             x: newLocation.x - currentPoints.start.x,
             y: newLocation.y - currentPoints.start.y
